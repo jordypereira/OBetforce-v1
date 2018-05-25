@@ -1,19 +1,19 @@
 <template>
   <v-container grid-list-md>
     <v-jumbotron height="350px" class="my-2 px-5">
-    <v-container fill-height>
-      <v-layout align-center>
-        <v-flex>
-          <h3 class="display-3">Welcome to ScoreMastr</h3>
-          <span class="subheading">On this website you will be able to prove how good you are.</span>
-          <v-divider class="my-3"></v-divider>
-          <div class="title mb-3">Get started right away!</div>
-          <v-btn large color="primary" class="mx-0">Register</v-btn>
-          <v-btn large color="primary" class="mx-0 ml-4">Login</v-btn>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </v-jumbotron>
+      <v-container fill-height>
+        <v-layout align-center>
+          <v-flex>
+            <h3 class="display-3">Welcome to {{ this.$store.state.sitename }}</h3>
+            <span class="subheading">On this website you will be able to prove how good you are.</span>
+            <v-divider class="my-3"></v-divider>
+            <div class="title mb-3">Get started right away!</div>
+            <v-btn large color="primary" class="mx-0">Register</v-btn>
+            <v-btn large color="primary" class="mx-0 ml-4">Login</v-btn>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-jumbotron>
     <v-layout row wrap>
       <v-flex v-for="(subject, i) in subjects" :key="i">
         <score-card :subject="subject" />
@@ -57,6 +57,26 @@ export default {
         },
         {
           name: 'Fixture',
+          img: fixtureImage,
+          matches: [
+            {
+              league: 'England - League One',
+              homeTeam: 'Oxford United',
+              awayTeam: 'Scunthorpe United',
+              homeScore: 1,
+              awayScore: 1,
+            },
+            {
+              league: 'England - League One',
+              homeTeam: 'Millwall',
+              awayTeam: 'Nottingham Forest',
+              homeScore: 2,
+              awayScore: 0,
+            },
+          ],
+        },
+        {
+          name: 'Scores',
           img: fixtureImage,
           matches: [
             {

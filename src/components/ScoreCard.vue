@@ -1,35 +1,35 @@
 <template>
-  <v-card  class="subject">
+  <v-card class="subject">
     <v-card-media :src="subject.img" :alt="subject.name" :height="imageHeight" contain>
     </v-card-media>
     <v-card-title v-if="subject.matches" primary-title>
-        <div v-for="(match,i) in subject.matches" :key="i" class="match">
-          <div class="match-league">{{ match.league }}</div>
-          <div class="match-scoreboard secondary white--text">
-            <div class="match-team">
-              {{ match.homeTeam }}
-            </div>
-            <div class="match-score primary">
-              {{ match.homeScore }} - {{ match.awayScore }}
-            </div>
-            <div class="match-team">
-              {{ match.awayTeam }}
-            </div>
+      <div v-for="(match,i) in subject.matches" :key="i" class="match">
+        <div class="match-league">{{ match.league }}</div>
+        <div class="match-scoreboard secondary white--text">
+          <div class="match-team">
+            {{ match.homeTeam }}
+          </div>
+          <div class="match-score primary">
+            {{ match.homeScore }} - {{ match.awayScore }}
+          </div>
+          <div class="match-team">
+            {{ match.awayTeam }}
           </div>
         </div>
+      </div>
     </v-card-title>
     <v-card-title v-if="subject.news" primary-title>
-        <div v-for="(newsItem,i) in subject.news" :key="i" class="newsItem">
-          <img :src="newsItem.img" alt="News Image" contain>
-          <div class="newsItem-content" :to="newsItem.link">
-            <div class="newsItem-title">
-              {{ newsItem.title }}
-            </div>
-            <div class="newsItem-date primary--text">
-              {{ newsItem.date }}
-            </div>
+      <div v-for="(newsItem,i) in subject.news" :key="i" class="newsItem">
+        <img :src="newsItem.img" alt="News Image" contain>
+        <div class="newsItem-content" :to="newsItem.link">
+          <div class="newsItem-title">
+            {{ newsItem.title }}
+          </div>
+          <div class="newsItem-date primary--text">
+            {{ newsItem.date }}
           </div>
         </div>
+      </div>
     </v-card-title>
     <v-card-actions>
       <v-btn flat color="primary">Explore</v-btn>
@@ -97,7 +97,7 @@ export default {
 
 @media (min-width: 600px) {
   .subject {
-    width: 400px;
+    width: 300px;
   }
 }
 </style>
