@@ -1,9 +1,11 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex xs12 class="headline">
-        <div class="d-inline" v-for="letter in letters" :key="letter">
-          <a href="#">{{ letter }}</a> |
+      <v-flex xs12 class="headline" row justify-center>
+        <div class="d-flex row justify-center">
+          <div class="d-inline mr-2" v-for="letter in letters" :key="letter">
+            <a :href="`#${letter}`">{{ letter }}</a> |
+          </div>
         </div>
       </v-flex>
     </v-layout>
@@ -29,8 +31,44 @@
 export default {
   data() {
     return {
-      letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+      letters: [
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'I',
+        'J',
+        'K',
+        'L',
+        'M',
+        'N',
+        'O',
+        'P',
+        'Q',
+        'R',
+        'S',
+        'T',
+        'U',
+        'V',
+        'W',
+        'X',
+        'Y',
+        'Z'
+      ]
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.d-flex {
+  * {
+    flex: 0 0 auto !important;
+  }
+}
+</style>
+

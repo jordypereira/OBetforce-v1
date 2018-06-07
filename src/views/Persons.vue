@@ -12,7 +12,7 @@
 
 <script>
 import personImage from '@/assets/images/friends_pics.jpg'
-import GroupOverview from '@/components/GroupOverview'
+import GroupOverview from '@/components/Persons/GroupOverview'
 
 export default {
   components: {
