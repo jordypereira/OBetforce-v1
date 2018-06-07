@@ -2,22 +2,34 @@
   <div id="betslips">
     <h1>Betslips</h1>
     <v-layout>
-      <v-flex xs12 sm3 class="mx-auto">
+      <v-flex xs12 sm4 class="mx-auto">
         <v-card>
           <v-card-title>
-            <div>
-              <div class="black">
-                <h1 class="white--text">BETTING SLIP</h1>
+            <div style="width: 100%">
+              <div class="black text-xs-center">
+                <h1 class="white--text py-2" style="fontWeight: 400">BETTING SLIP</h1>
               </div>
-              <span class="grey--text">Number 10</span><br>
-              <span>Whitehaven Beach</span><br>
-              <span>Whitsunday Island, Whitsunday Islands</span>
+              <span class="text-xs-center d-block mt-3">CUSTOMER RECEIPT</span>
+              <v-layout v-for="(bet, i) in bets" :key="i" row justify-space-between class="betslip mt-5">
+                <v-flex xs6>
+                  <p>
+                    <span class="title">{{ bet.match }}</span><br/>
+                    <span class="grey--text">{{ bet.condition }}</span>
+                  </p>
+                </v-flex>
+                <v-flex xs2 class="text-xs-right">
+                  <p>{{ bet.time }}<br/>
+                    <span class="grey--text">{{ bet.date }}</span>
+                  </p>
+                </v-flex>
+              </v-layout>
             </div>
           </v-card-title>
-          <v-card-actions>
-            <v-btn flat color="orange">Share</v-btn>
-            <v-btn flat color="orange">Explore</v-btn>
-          </v-card-actions>
+          <v-layout>
+            <v-flex d-flex xs12>
+              <img src="@/assets/images/slip_code.jpg" alt="Slip code">
+            </v-flex>
+          </v-layout>
         </v-card>
       </v-flex>
     </v-layout>
@@ -25,8 +37,36 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      bets: [
+        {
+          match: 'Manchester C. - Chelsea',
+          condition: 'Under / Over - Over 2.5',
+          time: '13:30',
+          date: '19-10-2017'
+        },
+        {
+          match: 'Lazio - Pescara',
+          condition: '1x2 - 1',
+          time: '21:00',
+          date: '20-10-2017'
+        },
+        {
+          match: 'Barcelona - Sevilla',
+          condition: 'Both teams to score - No',
+          time: '22:00',
+          date: '18-10-2017'
+        },
+        {
+          match: 'Bayern Munich - Werder Bremen',
+          condition: 'Half time / Full Time - 1/1',
+          time: '15:30',
+          date: '18-10-2017'
+        }
+      ]
+    }
+  }
+}
 </script>
-
-<style>
-</style>
