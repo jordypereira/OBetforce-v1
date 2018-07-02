@@ -1,6 +1,6 @@
 <template>
   <div id="group-overview">
-    <v-layout row justify-content-between class="primary pa-3 white--text" style="borderRadius: 10px">
+    <v-layout row justify-content-between class="primary pa-3 white--text border-10">
       <v-flex xs12 class="headline">
         {{ category.name }}
       </v-flex>

@@ -1,5 +1,5 @@
 <template>
-  <div id="betslips">
+  <v-container id="betslips">
     <h1>Betslips</h1>
     <v-layout>
       <v-flex xs12 sm4 class="mx-auto">
@@ -33,7 +33,7 @@
         </v-card>
       </v-flex>
     </v-layout>
-  </div>
+  </v-container>
 </template>
 
 <script>
