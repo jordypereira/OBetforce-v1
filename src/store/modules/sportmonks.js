@@ -10,7 +10,8 @@ axios.create({
 });
 
 const state = {
-  livescores: null
+  livescores: null,
+  leagues: null
 }
 
 const getters = {}
@@ -18,6 +19,9 @@ const getters = {}
 const mutations = {
   setLivescores(state, payload) {
     state.livescores = payload
+  },
+  setLeagues(state, payload) {
+    state.leagues = payload
   }
 }
 
@@ -40,6 +44,26 @@ const actions = {
           root: true
         })
         commit('setLivescores', response.data.data)
+      })
+  },
+  getLeagues({
+    commit
+  }) {
+    commit('shared/setLoading', true, {
+      root: true
+    })
+    commit('shared/clearError', '', {
+      root: true
+    })
+    axios
+      .get(
+        'https://soccer.sportmonks.com/api/v2.0/leagues?api_token=' + sportmonksAPI,
+      )
+      .then(response => {
+        commit('shared/setLoading', false, {
+          root: true
+        })
+        commit('setLeagues', response.data.data)
       })
   }
 }

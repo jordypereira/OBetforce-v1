@@ -31,12 +31,12 @@ export default {
     return {
       country: null,
       selectedLeague: null,
-      leagues: null,
       info: null,
     };
   },
   computed: { ...mapState({
     livescores: state => state.sportmonks.livescores,
+    leagues: state => state.sportmonks.leagues,
     loading: state => state.shared.loading
   })},
 
@@ -48,16 +48,8 @@ export default {
   },
   created() {
     this.$store.dispatch('sportmonks/getLivescores')
-    // axios
-    //   .get(
-    //     'https://soccer.sportmonks.com/api/v2.0/livescores?api_token=DWKiZeKLZU0RgcgX1L6PX1mxroSV8e70EYLBSNwxsEej5a9mE9ptYuV2oFWD&include=stats,localTeam,visitorTeam,league',
-    //   ) // eslint-disable-next-line
-    //   .then(response => (this.matches = response.data.data));
-    axios
-      .get(
-        'https://soccer.sportmonks.com/api/v2.0/leagues?api_token=DWKiZeKLZU0RgcgX1L6PX1mxroSV8e70EYLBSNwxsEej5a9mE9ptYuV2oFWD',
-      ) // eslint-disable-next-line
-      .then(response => (this.leagues = response.data.data));
+    this.$store.dispatch('sportmonks/getLeagues')
+   
   },
 };
 </script>
