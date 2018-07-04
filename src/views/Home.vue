@@ -4,7 +4,7 @@
       <v-container fill-height>
         <v-layout align-center>
           <v-flex>
-            <h3 class="display-3">Welcome to {{ this.$store.state.sitename }}</h3>
+            <h3 class="display-3">Welcome to {{ this.$store.state.shared.sitename }}</h3>
             <span class="subheading">On this website you will be able to prove how good you are.</span>
             <v-divider class="my-3"></v-divider>
             <div class="title mb-3">Get started right away!</div>
