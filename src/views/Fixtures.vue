@@ -1,10 +1,10 @@
 <template>
   <div id="fixtures">
     <v-container>
+      <h1>Fixtures</h1>
+      <p v-if="loading">Loading...</p>
       <v-layout row wrap>
-        <h1>Fixtures</h1>
-        <p v-if="loading">Loading...</p>
-        <v-flex v-if="countries" xs12 sm 6 v-for="(match, i) in fixtures" :key="i">
+        <v-flex v-if="countries" xs12 sm8 v-for="(match, i) in fixtures" :key="i">
           <fixture-row :match="match" :country="getCountry(match.league.data.country_id)" />
         </v-flex>
         <v-flex v-if="!fixtures && !loading" xs12 sm 6>No Matches Found</v-flex>
