@@ -1,7 +1,7 @@
 const state = {
   loading: false,
   error: null,
-  sitename: 'OBetforce'
+  sitename: 'OBetforce',
 }
 
 const getters = {

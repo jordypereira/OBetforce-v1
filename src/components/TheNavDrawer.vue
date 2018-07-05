@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" fixed app clipped dark>
+  <v-navigation-drawer v-model="$store.state.drawer" fixed app clipped dark>
     <v-list dense>
       <v-list-tile value="true" to="/">
         <v-list-tile-action>
@@ -58,7 +58,6 @@ import TheNavDrawer from '@/components/TheNavDrawer'
 export default {
   data() {
     return {
-      drawer: true,
       navMatches: [
         {
           icon: 'play_arrow',
