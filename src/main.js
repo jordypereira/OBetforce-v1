@@ -20,6 +20,18 @@ Vue.use(Vuetify, {
 
 Vue.config.productionTip = false
 Vue.filter('shortenDate', date => date.substring(0, 5));
+Vue.filter('getDay', date => {
+  date = new Date(date)
+  let weekday = new Array(7);
+  weekday[0] = "Sun";
+  weekday[1] = "Mon";
+  weekday[2] = "Tue";
+  weekday[3] = "Wed";
+  weekday[4] = "Thu";
+  weekday[5] = "Fri";
+  weekday[6] = "Sat";
+  return weekday[date.getDay()]
+});
 
 new Vue({
   router,

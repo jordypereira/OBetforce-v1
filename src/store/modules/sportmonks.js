@@ -1,17 +1,23 @@
-import axios from 'axios'
+import {
+  SportmonksApi
+} from 'sportmonks';
+const sportmonksAPI = new SportmonksApi('DWKiZeKLZU0RgcgX1L6PX1mxroSV8e70EYLBSNwxsEej5a9mE9ptYuV2oFWD');
 
-const sportmonksAPI = 'DWKiZeKLZU0RgcgX1L6PX1mxroSV8e70EYLBSNwxsEej5a9mE9ptYuV2oFWD'
+// const sportmonksAPI = '?api_token=DWKiZeKLZU0RgcgX1L6PX1mxroSV8e70EYLBSNwxsEej5a9mE9ptYuV2oFWD'
 
-axios.create({
-  baseURL: 'https://soccer.sportmonks.com/api/v2.0/',
-  headers: {
-    'api_token': 'DWKiZeKLZU0RgcgX1L6PX1mxroSV8e70EYLBSNwxsEej5a9mE9ptYuV2oFWD'
-  }
-});
+let getNextWeek = () => {
+  let nextWeek = new Date()
+  nextWeek.setDate(nextWeek.getDate() + 10);
+  nextWeek = nextWeek.toISOString().split('T')[0]
+
+  return nextWeek
+}
 
 const state = {
   livescores: null,
-  leagues: null
+  leagues: null,
+  fixtures: null,
+  countries: null,
 }
 
 const getters = {}
@@ -22,6 +28,12 @@ const mutations = {
   },
   setLeagues(state, payload) {
     state.leagues = payload
+  },
+  setFixtures(state, payload) {
+    state.fixtures = payload
+  },
+  setCountries(state, payload) {
+    state.countries = payload
   }
 }
 
@@ -35,15 +47,20 @@ const actions = {
     commit('shared/clearError', '', {
       root: true
     })
-    axios
+    sportmonksAPI
       .get(
-        'https://soccer.sportmonks.com/api/v2.0/livescores?api_token=' + sportmonksAPI + '&include=stats,localTeam,visitorTeam,league',
+        'v2.0/livescores', {
+          stats: true,
+          localTeam: true,
+          visitorTeam: true,
+          league: true
+        },
       )
       .then(response => {
         commit('shared/setLoading', false, {
           root: true
         })
-        commit('setLivescores', response.data.data)
+        commit('setLivescores', response.data)
       })
   },
   getLeagues({
@@ -55,15 +72,60 @@ const actions = {
     commit('shared/clearError', '', {
       root: true
     })
-    axios
+    sportmonksAPI
       .get(
-        'https://soccer.sportmonks.com/api/v2.0/leagues?api_token=' + sportmonksAPI,
+        'v2.0/leagues',
       )
       .then(response => {
         commit('shared/setLoading', false, {
           root: true
         })
-        commit('setLeagues', response.data.data)
+        commit('setLeagues', response.data)
+      })
+  },
+  getFixtures({
+    commit
+  }) {
+    commit('shared/setLoading', true, {
+      root: true
+    })
+    commit('shared/clearError', '', {
+      root: true
+    })
+    const today = new Date().toISOString().split('T')[0]
+    const nextWeek = getNextWeek()
+    sportmonksAPI
+      .get(
+        'v2.0/fixtures/date/{date}', {
+          date: today,
+          odds: true,
+          localTeam: true,
+          visitorTeam: true,
+          league: true
+        }
+      )
+      .then(response => {
+        commit('shared/setLoading', false, {
+          root: true
+        })
+        commit('setFixtures', response.data)
+      })
+  },
+  getCountries({
+    commit
+  }) {
+    commit('shared/setLoading', true, {
+      root: true
+    })
+    commit('shared/clearError', '', {
+      root: true
+    })
+    sportmonksAPI.get('v2.0/countries')
+      .then(response => {
+        commit('shared/setLoading', false, {
+          root: true
+        })
+        commit('setCountries', response.data)
       })
   }
 }
