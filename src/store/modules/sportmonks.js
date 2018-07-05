@@ -96,8 +96,9 @@ const actions = {
     const nextWeek = getNextWeek()
     sportmonksAPI
       .get(
-        'v2.0/fixtures/date/{date}', {
-          date: today,
+        'v2.0/fixtures/between/{from}/{to}', {
+          from: today,
+          to: nextWeek,
           odds: true,
           localTeam: true,
           visitorTeam: true,
