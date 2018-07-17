@@ -33,8 +33,8 @@ import Odd from './FixtureOdd'
 
 export default {
   props: {
-    match: [Array, Object],
-    country: [Array, Object]
+    match: [Object],
+    country: [Object]
   },
   components: {
     Odd

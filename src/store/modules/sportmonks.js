@@ -17,7 +17,7 @@ const state = {
   livescores: null,
   leagues: localStorage.getItem('sportmonks/countries'),
   fixtures: null,
-  countries: localStorage.getItem('sportmonks/countries')
+  countries: localStorage.getItem('sportmonks/countries') || null
 }
 
 const getters = {}
