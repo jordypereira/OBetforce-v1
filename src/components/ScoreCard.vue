@@ -32,7 +32,7 @@
       </div>
     </v-card-title>
     <v-card-actions>
-      <v-btn flat color="primary">Explore</v-btn>
+      <v-btn flat color="primary" :to="subject.link">Explore</v-btn>
     </v-card-actions>
   </v-card>
 </template>

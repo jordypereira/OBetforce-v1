@@ -37,6 +37,7 @@ export default {
       subjects: [
         {
           name: 'Live',
+          link: 'livescore',
           img: liveImage,
           matches: [
             {
@@ -57,6 +58,7 @@ export default {
         },
         {
           name: 'Fixture',
+          link: 'fixtures',
           img: fixtureImage,
           matches: [
             {
@@ -77,6 +79,7 @@ export default {
         },
         {
           name: 'Scores',
+          link: 'fixtures',
           img: fixtureImage,
           matches: [
             {
@@ -97,6 +100,7 @@ export default {
         },
         {
           name: 'News',
+          link: 'newsfeed',
           img: newsImage,
           news: [
             {
