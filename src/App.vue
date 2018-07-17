@@ -5,9 +5,9 @@
     <v-content>
       <router-view/>
     </v-content>
-    <v-footer app>
+    <!-- <v-footer app>
       <span></span>
-    </v-footer>
+    </v-footer> -->
   </v-app>
 </template>
 
