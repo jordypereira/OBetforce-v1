@@ -29,8 +29,8 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data() {
     return {
-      email: null,
-      password: null,
+      email: '',
+      password: '',
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid'

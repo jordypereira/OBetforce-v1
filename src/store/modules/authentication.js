@@ -7,40 +7,40 @@ const state = {
 const getters = {}
 
 const mutations = {
-  LOGIN(state) {
-    state.pending = true;
+  LOGIN (state) {
+    state.pending = true
   },
-  LOGIN_SUCCESS(state) {
-    state.isLoggedIn = true;
-    state.pending = false;
+  LOGIN_SUCCESS (state) {
+    state.isLoggedIn = true
+    state.pending = false
   },
-  LOGOUT(state) {
-    state.isLoggedIn = false;
+  LOGOUT (state) {
+    state.isLoggedIn = false
   },
-  updateUsername(state, username) {
-    state.username = username;
+  updateUsername (state, username) {
+    state.username = username
   }
 }
 
 const actions = {
-  login({
+  login ({
     commit
   }, creds) {
     commit('LOGIN') // show spinner
     return new Promise(resolve => {
       setTimeout(() => {
-        localStorage.setItem("token", creds.email);
+        localStorage.setItem('token', creds.email)
         commit('LOGIN_SUCCESS')
         commit('updateUsername', creds.email)
-        resolve();
-      }, 1000);
-    });
+        resolve()
+      }, 1000)
+    })
   },
-  logout({
+  logout ({
     commit
   }) {
-    localStorage.removeItem("token");
-    commit('LOGOUT');
+    localStorage.removeItem('token')
+    commit('LOGOUT')
   }
 }
 
