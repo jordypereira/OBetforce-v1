@@ -15,9 +15,10 @@ let getNextWeek = () => {
 
 const state = {
   livescores: null,
-  leagues: localStorage.getItem('sportmonks/countries'),
+  leagues: localStorage.getItem('sportmonks/countries') || null,
   fixtures: null,
-  countries: localStorage.getItem('sportmonks/countries') || null
+  countries: localStorage.getItem('sportmonks/countries') || null,
+  fixturesLoading: false
 }
 
 const getters = {}
@@ -36,6 +37,9 @@ const mutations = {
   setCountries (state, payload) {
     state.countries = payload
     localStorage.setItem('countries', payload)
+  },
+  setFixturesLoading (state, payload) {
+    state.fixturesLoading = payload
   }
 }
 
@@ -60,10 +64,10 @@ const actions = {
         league: true
       })
       .then((response) => {
+        commit('setLivescores', response.data)
         commit('shared/setLoading', false, {
           root: true
         })
-        commit('setLivescores', response.data)
       })
   },
   getLeagues ({ dispatch }) {
@@ -79,10 +83,10 @@ const actions = {
       root: true
     })
     sportmonksAPI.get('v2.0/leagues').then((response) => {
+      commit('setLeagues', response.data)
       commit('shared/setLoading', false, {
         root: true
       })
-      commit('setLeagues', response.data)
     })
   },
   getFixtures ({ dispatch }) {
@@ -94,6 +98,7 @@ const actions = {
     commit('shared/setLoading', true, {
       root: true
     })
+    commit('setFixturesLoading', true)
     commit('shared/clearError', '', {
       root: true
     })
@@ -109,10 +114,11 @@ const actions = {
         league: true
       })
       .then((response) => {
+        commit('setFixtures', response.data)
         commit('shared/setLoading', false, {
           root: true
         })
-        commit('setFixtures', response.data)
+        commit('setFixturesLoading', false)
       })
   },
   getCountries ({ dispatch }) {
@@ -128,10 +134,10 @@ const actions = {
       root: true
     })
     sportmonksAPI.get('v2.0/countries').then((response) => {
+      commit('setCountries', response.data)
       commit('shared/setLoading', false, {
         root: true
       })
-      commit('setCountries', response.data)
     })
   }
 }
