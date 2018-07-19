@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-md>
-    <v-jumbotron height="350px" class="my-2 px-5">
+    <v-jumbotron height="350px" class="my-2 px-5" v-if="!isLoggedIn">
       <v-container fill-height>
         <v-layout align-center>
           <v-flex>
@@ -27,10 +27,16 @@ import liveImage from '@/assets/images/live_score.jpg';
 import fixtureImage from '@/assets/images/fixture.jpg';
 import newsImage from '@/assets/images/news_section.jpg';
 import ScoreCard from '@/components/ScoreCard';
+import { mapState } from 'vuex'
 
 export default {
   components: {
     ScoreCard,
+  },
+  computed: {
+    ...mapState({
+      isLoggedIn: state => state.authentication.isLoggedIn
+  })
   },
   data() {
     return {
