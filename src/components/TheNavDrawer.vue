@@ -83,6 +83,11 @@ export default {
         },
         {
           icon: 'play_arrow',
+          title: 'OBonus',
+          to: '/obonus'
+        },
+        {
+          icon: 'play_arrow',
           title: 'News Feed',
           to: '/newsfeed'
         }

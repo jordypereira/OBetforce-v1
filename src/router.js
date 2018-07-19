@@ -12,58 +12,64 @@ import Groups from './views/Groups.vue'
 import Help from './views/Help.vue'
 import Glossary from './views/Glossary.vue'
 import Tutorial from './views/Tutorial.vue'
+import OBonus from './views/OBonus.vue'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  routes: [{
+  routes: [
+    {
       path: '/',
-      component: Home,
+      component: Home
     },
     {
       path: '/livescore',
-      component: LiveScore,
+      component: LiveScore
     },
     {
       path: '/fixtures',
-      component: Fixtures,
+      component: Fixtures
     },
     {
       path: '/obetforce',
-      component: Obetforce,
+      component: Obetforce
     },
     {
       path: '/betslips',
-      component: Betslips,
+      component: Betslips
     },
     {
       path: '/newsfeed',
-      component: NewsFeed,
+      component: NewsFeed
     },
     {
       path: '/challenges',
-      component: Challenges,
+      component: Challenges
     },
     {
       path: '/persons',
-      component: Persons,
+      component: Persons
     },
     {
       path: '/groups',
-      component: Groups,
+      component: Groups
     },
     {
       path: '/help',
-      component: Help,
+      component: Help
     },
     {
       path: '/glossary',
-      component: Glossary,
+      component: Glossary
     },
     {
       path: '/tutorial',
-      component: Tutorial,
+      component: Tutorial
+    },
+    {
+      path: '/obonus',
+      component: OBonus
     }
-  ],
+  ]
 })
