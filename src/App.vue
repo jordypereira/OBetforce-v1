@@ -28,5 +28,8 @@ export default {
 .border-10 {
   border-radius: 10px;
 }
+.m-auto {
+  margin: 0 auto;
+}
 </style>
 
