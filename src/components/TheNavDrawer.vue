@@ -126,3 +126,9 @@ export default {
   name: 'NavDrawer'
 }
 </script>
+
+<style scoped>
+.v-navigation-drawer {
+  padding: 0;
+}
+</style>
