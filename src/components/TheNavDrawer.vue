@@ -53,7 +53,6 @@
 </template>
 
 <script>
-import TheNavDrawer from '@/components/TheNavDrawer'
 
 export default {
   data() {
