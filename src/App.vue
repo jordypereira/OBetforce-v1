@@ -5,7 +5,7 @@
     <v-content>
       <router-view/>
     </v-content>
-    <BetslipDrawer />
+    <BetslipDrawer v-if="isLoggedIn" />
     <!-- <v-footer app>
       <span></span>
     </v-footer> -->
@@ -16,12 +16,18 @@
 import TheNavDrawer from '@/components/TheNavDrawer'
 import BetslipDrawer from '@/components/BetslipDrawer'
 import TheNavToolbar from '@/components/TheNavToolbar'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
     TheNavDrawer,
     TheNavToolbar,
     BetslipDrawer
+  },
+  computed: {
+    ...mapState({
+      isLoggedIn: state => state.authentication.isLoggedIn,
+  })
   },
   name: 'App'
 }
