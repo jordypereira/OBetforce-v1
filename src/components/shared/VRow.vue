@@ -1,7 +1,7 @@
 <template>
   <v-flex xs12>
     <v-layout>
-      <v-flex xs12 sm4 d-flex justify-center v-for="i in 3" :key="i" v-html="column[i-1]" :class="classes"></v-flex>
+      <v-flex xs12 sm4 d-flex justify-center v-for="i in column" :key="i" v-html="i" :class="classes"></v-flex>
     </v-layout>
   </v-flex>
 </template>
