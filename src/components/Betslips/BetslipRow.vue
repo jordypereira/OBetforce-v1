@@ -2,7 +2,7 @@
   <v-layout>
     <v-flex xs2>
       <v-btn block icon right>
-        <v-icon>close</v-icon>
+        <v-icon @click="$emit('deleteRow')">close</v-icon>
       </v-btn>
     </v-flex>
     <v-flex xs8>

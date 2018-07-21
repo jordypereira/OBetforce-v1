@@ -1,14 +1,6 @@
 const state = {
   betslips: [],
-  betslipRows: [
-    {
-      category: 'Reguliere speeltijd',
-      home: 'Portugal',
-      away: 'Spain',
-      condition: 'Portugal',
-      odds: '4.05'
-    }
-  ]
+  betslipRows: []
 }
 
 const getters = {}
@@ -20,12 +12,18 @@ const mutations = {
   addBetslip (state) {
     state.betslips.push(state.betslipRows)
     state.betslipRows = []
+  },
+  removeBetslipRow (state, id) {
+    state.betslipRows.splice(id, 1)
   }
 }
 
 const actions = {
   createRow ({ commit }, row) {
     commit('addRow', row)
+  },
+  deleteRow ({ commit }, id) {
+    commit('removeBetslipRow', id)
   },
   saveBetslip ({ commit }) {
     commit('addBetslip')
