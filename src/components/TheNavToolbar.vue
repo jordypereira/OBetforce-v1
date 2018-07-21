@@ -6,6 +6,7 @@
     <v-toolbar-items>
       <the-member-block></the-member-block>
     </v-toolbar-items>
+    <v-toolbar-side-icon @click.stop="$store.state.betslipdrawer = !$store.state.betslipdrawer"></v-toolbar-side-icon>
   </v-toolbar>
 </template>
 

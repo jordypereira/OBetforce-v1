@@ -5,6 +5,7 @@
     <v-content>
       <router-view/>
     </v-content>
+    <BetslipDrawer />
     <!-- <v-footer app>
       <span></span>
     </v-footer> -->
@@ -13,12 +14,14 @@
 
 <script>
 import TheNavDrawer from '@/components/TheNavDrawer'
+import BetslipDrawer from '@/components/BetslipDrawer'
 import TheNavToolbar from '@/components/TheNavToolbar'
 
 export default {
   components: {
     TheNavDrawer,
-    TheNavToolbar
+    TheNavToolbar,
+    BetslipDrawer
   },
   name: 'App'
 }
