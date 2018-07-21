@@ -40,5 +40,8 @@ export default {
 .m-auto {
   margin: 0 auto;
 }
+.pointer {
+  cursor: pointer;
+}
 </style>
 

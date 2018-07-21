@@ -8,25 +8,31 @@
     <v-flex xs8>
       <v-layout row wrap>
         <v-flex xs12 d-flex>
-          Portugal
+          {{ condition }}
         </v-flex>
         <v-flex xs12 d-flex class="grey--text">
-          Reguliere speeltijd
+          {{ category }}
         </v-flex>
         <v-flex xs12 d-flex>
-          Portugal - Spanje
+          {{ home }} - {{ away }}
         </v-flex>
       </v-layout>
     </v-flex>
     <v-flex xs2 d-flex align-start justify-end>
-      4.05
+      {{ odds }}
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 export default {
-
+  props: {
+    condition: String,
+    category: String,
+    home: String,
+    away: String,
+    odds: [String, Number]
+  }
 }
 </script>
 
