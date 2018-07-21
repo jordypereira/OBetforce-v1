@@ -9,7 +9,7 @@
     </v-list>
     <v-layout justify-center align-center>
 
-      <v-btn class="m-auto primary">Save Betslip</v-btn>
+      <v-btn class="m-auto primary" @click="$store.dispatch('betslips/saveBetslip')">Save Betslip</v-btn>
     </v-layout>
   </v-navigation-drawer>
 </template>

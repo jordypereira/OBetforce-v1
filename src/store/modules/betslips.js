@@ -16,12 +16,19 @@ const getters = {}
 const mutations = {
   addRow (state, row) {
     state.betslipRows.push(row)
+  },
+  addBetslip (state) {
+    state.betslips.push(state.betslipRows)
+    state.betslipRows = []
   }
 }
 
 const actions = {
   createRow ({ commit }, row) {
     commit('addRow', row)
+  },
+  saveBetslip ({ commit }) {
+    commit('addBetslip')
   }
 }
 
