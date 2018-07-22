@@ -1,6 +1,16 @@
 <template>
   <v-navigation-drawer v-model="$store.state.drawer" fixed app clipped dark>
     <v-list dense>
+      <v-list-tile v-if="isLoggedIn" @click="logout" class="hidden-sm-and-up" value="true">
+        <v-list-tile-action>
+          <v-icon>exit_to_app</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title>
+            Logout
+          </v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
       <v-list-tile value="true" to="/">
         <v-list-tile-action>
           <v-icon>play_arrow</v-icon>
@@ -53,6 +63,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 
 export default {
   data() {
@@ -127,7 +138,18 @@ export default {
       ]
     }
   },
-  name: 'NavDrawer'
+  name: 'NavDrawer',
+  methods: {
+    logout() {
+     this.$store.dispatch('authentication/logout');
+    },
+  },
+  computed: {
+    ...mapState({
+      isLoggedIn: state => state.authentication.isLoggedIn,
+      userEmail: state => state.authentication.username,
+  })
+  }
 }
 </script>
 

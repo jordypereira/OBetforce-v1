@@ -15,7 +15,7 @@
         </v-layout>
       </v-form>
       <a v-if="pending">Logging user in..</a>
-      <a v-if="isLoggedIn" @click="logout">{{ userEmail }}, Logout</a>
+      <a v-if="isLoggedIn" @click="logout" class="hidden-xs-only">{{ userEmail }}, Logout</a>
     </v-flex>
   </v-layout>
   <!-- <p>New here?
