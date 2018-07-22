@@ -4,12 +4,12 @@
       <v-container fill-height>
         <v-layout align-center>
           <v-flex>
-            <h3 class="display-3">Welcome to {{ this.$store.state.shared.sitename }}</h3>
+            <h3 :class="displayMobile">Welcome to {{ this.$store.state.shared.sitename }}</h3>
             <span class="subheading">On this website you will be able to prove how good you are.</span>
             <v-divider class="my-3"></v-divider>
             <div class="title mb-3">Get started right away!</div>
             <v-btn large color="primary" class="mx-0">Register</v-btn>
-            <v-btn large color="primary" class="mx-0 ml-4">Login</v-btn>
+            <!-- <v-btn large color="primary" class="mx-0 ml-4">Login</v-btn> -->
           </v-flex>
         </v-layout>
       </v-container>
@@ -36,7 +36,14 @@ export default {
   computed: {
     ...mapState({
       isLoggedIn: state => state.authentication.isLoggedIn
-  })
+  }),
+  displayMobile() {
+    if(this.$vuetify.breakpoint.xs){
+      return 'headline'
+    }else {
+      return 'display-3'
+    }
+  }
   },
   data() {
     return {
