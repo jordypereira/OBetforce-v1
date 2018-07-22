@@ -1,8 +1,8 @@
 <template>
   <v-layout>
     <v-flex xs2>
-      <v-btn block icon right>
-        <v-icon @click="$emit('deleteRow')">close</v-icon>
+      <v-btn block icon right @click="$emit('deleteRow')">
+        <v-icon>close</v-icon>
       </v-btn>
     </v-flex>
     <v-flex xs8>

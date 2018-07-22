@@ -15,8 +15,8 @@ let getNextWeek = () => {
 
 const state = {
   livescores: null,
-  leagues: localStorage.getItem('sportmonks/countries') || null,
-  fixtures: null,
+  leagues: localStorage.getItem('sportmonks/leagues') || null,
+  fixtures: localStorage.getItem('sportmonks/fixtures') || null,
   countries: localStorage.getItem('sportmonks/countries') || null,
   fixturesLoading: false
 }
@@ -33,6 +33,7 @@ const mutations = {
   },
   setFixtures (state, payload) {
     state.fixtures = payload
+    localStorage.setItem('fixtures', payload)
   },
   setCountries (state, payload) {
     state.countries = payload
