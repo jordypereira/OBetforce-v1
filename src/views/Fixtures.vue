@@ -4,7 +4,7 @@
       <h1>Fixtures</h1>
       <p v-if="loading || fixturesLoading">Loading...</p>
       <v-layout row wrap v-if="countries && fixtures && !fixturesLoading && !loading">
-        <v-flex xs12 md8="$store.betslipDrawer" v-for="(match, i) in fixtures" :key="i">
+        <v-flex xs12 :class="fixtureFullScreen" v-for="(match, i) in fixtures" :key="i">
           <fixture-row :match="match" :country="getCountry(match.league.data.country_id)" :disableOdds="$store.getters['betslips/rowInBetslip'](match.id)" />
         </v-flex>
         <v-flex v-if="!fixtures" xs12 sm 6>No Matches Found</v-flex>
@@ -15,7 +15,7 @@
 
 <script>
 import FixtureRow from '@/components/Fixtures/FixturesRow';
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Fixtures',
@@ -28,9 +28,9 @@ export default {
     loading: state => state.shared.loading,
     fixturesLoading: state => state.sportmonks.fixturesLoading,
   }),
-    ...mapGetters({
-  rowInBetslip: 'betslips/rowInBetslip'
-})
+    fixtureFullScreen(){
+      return this.$store.state.betslipdrawer ? 'md12' : 'md8'
+    }
 },
 
   methods: {
