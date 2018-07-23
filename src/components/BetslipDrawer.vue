@@ -11,8 +11,8 @@
         </template>
       </ScaleTransition>
     </v-list>
-    <v-layout column justify-center align-center>
-      <p v-if="betslipRows.length" class="white--text pa-2">Total Odds: {{ totalOdds() }}</p>
+    <v-layout v-if="betslipRows.length" column justify-center align-center>
+      <p class="white--text pa-2">Total Odds: {{ totalOdds() }}</p>
       <v-btn class="primary" @click="$store.dispatch('betslips/saveBetslip')">Save Betslip</v-btn>
     </v-layout>
   </v-navigation-drawer>
