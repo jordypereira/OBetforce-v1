@@ -43,6 +43,10 @@ const mutations = {
     state.countries = payload
     localStorage.setItem('countries', payload)
   },
+  addToCountries (state, payload) {
+    state.countries.push(payload)
+    localStorage.setItem('countries', payload)
+  },
   setFixturesLoading (state, payload) {
     state.fixturesLoading = payload
   }
@@ -157,6 +161,20 @@ const actions = {
         })
         commit('setFixturesLoading', false)
       })
+  },
+  getCountryById ({ commit }, id) {
+    commit('shared/setLoading', true, {
+      root: true
+    })
+    commit('shared/clearError', '', {
+      root: true
+    })
+    sportmonksAPI.get('v2.0/countries/{id}', { id }).then((response) => {
+      commit('addToCountries', response.data)
+      commit('shared/setLoading', false, {
+        root: true
+      })
+    })
   },
   getCountries ({ dispatch }) {
     if (!this.state.countries) {

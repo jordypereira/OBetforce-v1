@@ -27,7 +27,10 @@
     </v-layout>
     <h3 class="text-xs-center mt-2">Pre Match Odds</h3>
     <v-layout text-xs-center align-center justify-center class="secondary white--text" v-if="match.odds.data[0]">
-      <Odd v-for="(name, i) in ['Home', 'Draw', 'Away']" :key="i" :name="name" :odd="match.odds.data[0].bookmaker.data[0].odds.data[i].value" @addBet="addBet(i)" :disableOdd="disableOdds" />
+      <Odd v-if="match.odds.data[0].bookmaker.data[0].odds.data[i]" v-for="(name, i) in ['Home', 'Draw', 'Away']" :key="i" :name="name" :odd="match.odds.data[0].bookmaker.data[0].odds.data[i].value" @addBet="addBet(i)" :disableOdd="disableOdds" />
+    </v-layout>
+    <v-layout v-else justify-center>
+      <p class="pt-2 font-weight-light font-italic"> No odds found </p>
     </v-layout>
   </div>
 </template>

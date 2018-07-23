@@ -9,11 +9,11 @@
         </v-flex>
       </v-layout>
       <p v-if="loading || fixturesLoading">Loading...</p>
-      <v-layout row wrap v-if="countries && fixtures && !fixturesLoading && !loading">
+      <v-layout row wrap v-if="countries && !fixturesLoading && !loading">
         <v-flex xs12 :class="fixtureFullScreen" v-for="(match, i) in fixtures" :key="i">
           <fixture-row :match="match" :country="getCountry(match.league.data.country_id)" :disableOdds="$store.getters['betslips/rowInBetslip'](match.id)" />
         </v-flex>
-        <v-flex v-if="!fixtures" xs12 sm 6>No Matches Found</v-flex>
+        <v-flex v-if="fixtures.length == 0" xs12 sm 6>No Matches Found</v-flex>
       </v-layout>
     </v-container>
   </div>
@@ -52,7 +52,12 @@ export default {
       const country = this.countries.filter((country) => {
         return country.id == id
       })
-      return country[0]
+      if(country[0]){
+        return country[0]
+      }
+      else if(this.countries.length > 0) {
+        this.$store.dispatch('sportmonks/getCountryById', id)
+      }
     },
     getDay (i) {
       let day = new Date()
