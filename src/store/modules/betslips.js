@@ -3,8 +3,6 @@ const state = {
   betslipRows: []
 }
 
-const getters = {}
-
 const mutations = {
   addRow (state, row) {
     state.betslipRows.push(row)
@@ -27,6 +25,12 @@ const actions = {
   },
   saveBetslip ({ commit }) {
     commit('addBetslip')
+  }
+}
+
+const getters = {
+  rowInBetslip: (state) => (id) => {
+    return state.betslipRows.some((betslipRow) => betslipRow.id === id)
   }
 }
 

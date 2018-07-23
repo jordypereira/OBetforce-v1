@@ -7,7 +7,10 @@
     </v-layout>
     <v-layout align-center>
       <v-flex class="xs12 px-2 py-1">
-        <span class="primary px-2 py-1 pointer" @click="$emit('addBet')">
+        <span v-if="!disableOdd" class="primary px-2 py-1 pointer" @click="$emit('addBet')">
+          {{ odd }}
+        </span>
+        <span v-else class="px-2 py-1">
           {{ odd }}
         </span>
       </v-flex>
@@ -20,6 +23,7 @@ export default {
   props: {
     name: String,
     odd: [Number, String],
+    disableOdd: Boolean
   }
 }
 </script>

@@ -23,7 +23,7 @@
     </v-layout>
     <h3 class="text-xs-center mt-2">Pre Match Odds</h3>
     <v-layout text-xs-center align-center justify-center class="secondary white--text" v-if="match.odds.data[0]">
-      <Odd v-for="(name, i) in ['Home', 'Draw', 'Away']" :key="i" :name="name" :odd="match.odds.data[0].bookmaker.data[0].odds.data[i].value" @addBet="addBet(i)" />
+      <Odd v-for="(name, i) in ['Home', 'Draw', 'Away']" :key="i" :name="name" :odd="match.odds.data[0].bookmaker.data[0].odds.data[i].value" @addBet="addBet(i)" :disableOdd="disableOdds" />
     </v-layout>
   </div>
 </template>
@@ -34,7 +34,8 @@ import Odd from './FixtureOdd'
 export default {
   props: {
     match: [Object],
-    country: [Object]
+    country: [Object],
+    disableOdds: Boolean
   },
   components: {
     Odd
@@ -50,6 +51,7 @@ export default {
       
       const row = 
       { 
+        id: this.match.id,
         category: 'Reguliere speeltijd', 
         home: this.match.localTeam.data.name, 
         away: this.match.visitorTeam.data.name, 
