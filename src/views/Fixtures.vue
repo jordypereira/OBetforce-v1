@@ -1,7 +1,13 @@
 <template>
   <div id="fixtures">
     <v-container>
-      <h1>Fixtures</h1>
+      <v-layout justify-space-between>
+        <h1>Fixtures</h1>
+        <v-flex xs4>
+
+          <v-select v-model="selectedDay" :items="days"></v-select>
+        </v-flex>
+      </v-layout>
       <p v-if="loading || fixturesLoading">Loading...</p>
       <v-layout row wrap v-if="countries && fixtures && !fixturesLoading && !loading">
         <v-flex xs12 :class="fixtureFullScreen" v-for="(match, i) in fixtures" :key="i">
@@ -22,14 +28,22 @@ export default {
   components: {
     FixtureRow,
   },
+  data() {
+    return {
+      days: [],
+      selectedDay: this.getDay(0),
+    }
+  },
   computed: { ...mapState({
-    fixtures: state => state.sportmonks.fixtures,
     countries: state => state.sportmonks.countries,
     loading: state => state.shared.loading,
     fixturesLoading: state => state.sportmonks.fixturesLoading,
   }),
     fixtureFullScreen(){
-      return this.$store.state.betslipdrawer ? 'md12' : 'md8'
+      return (this.$store.state.betslipdrawer) ? 'lg12' : 'lg8'
+    },
+    fixtures() {
+      return this.$store.state.sportmonks.dayFixtures[this.selectedDay] ? this.$store.state.sportmonks.dayFixtures[this.selectedDay] : null
     }
 },
 
@@ -39,11 +53,31 @@ export default {
         return country.id == id
       })
       return country[0]
+    },
+    getDay (i) {
+      let day = new Date()
+      day.setDate(day.getDate() + i)
+      day = day.toISOString().split('T')[0]
+
+      return day
+      },
+    getXDays(x) {
+      for (let index = 0; index < x; index++) {
+        this.days.push(this.getDay(index));
+      }
+      }
+  },
+  watch: {
+    // whenever selected day changes, this function will run
+    selectedDay: function (newDay, oldDay) {
+          this.$store.dispatch('sportmonks/getDayFixtures', newDay)   
+
     }
   },
   created() {
-    this.$store.dispatch('sportmonks/getFixtures')   
-    this.$store.dispatch('sportmonks/getCountries')   
+    this.getXDays(10) 
+    this.$store.dispatch('sportmonks/getDayFixtures', this.days[0])   
+    this.$store.dispatch('sportmonks/getCountries')  
   },
 };
 </script>

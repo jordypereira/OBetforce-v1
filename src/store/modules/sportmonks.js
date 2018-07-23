@@ -5,9 +5,9 @@ const sportmonksAPI = new SportmonksApi(
 
 // const sportmonksAPI = '?api_token=DWKiZeKLZU0RgcgX1L6PX1mxroSV8e70EYLBSNwxsEej5a9mE9ptYuV2oFWD'
 
-let getNextWeek = () => {
+let getNextWeek = (i) => {
   let nextWeek = new Date()
-  nextWeek.setDate(nextWeek.getDate() + 10)
+  nextWeek.setDate(nextWeek.getDate() + i)
   nextWeek = nextWeek.toISOString().split('T')[0]
 
   return nextWeek
@@ -18,6 +18,7 @@ const state = {
   leagues: localStorage.getItem('sportmonks/leagues') || null,
   fixtures: localStorage.getItem('sportmonks/fixtures') || null,
   countries: localStorage.getItem('sportmonks/countries') || null,
+  dayFixtures: [],
   fixturesLoading: false
 }
 
@@ -34,6 +35,9 @@ const mutations = {
   setFixtures (state, payload) {
     state.fixtures = payload
     localStorage.setItem('fixtures', payload)
+  },
+  setDayFixtures (state, payload) {
+    state.dayFixtures[payload.day] = payload.data
   },
   setCountries (state, payload) {
     state.countries = payload
@@ -104,7 +108,7 @@ const actions = {
       root: true
     })
     const today = new Date().toISOString().split('T')[0]
-    const nextWeek = getNextWeek()
+    const nextWeek = getNextWeek(10)
     sportmonksAPI
       .get('v2.0/fixtures/between/{from}/{to}', {
         from: today,
@@ -116,6 +120,38 @@ const actions = {
       })
       .then((response) => {
         commit('setFixtures', response.data)
+        commit('shared/setLoading', false, {
+          root: true
+        })
+        commit('setFixturesLoading', false)
+      })
+  },
+  getDayFixtures ({ dispatch }, day) {
+    // if (!this.state.dayFixtures[day]) {
+    dispatch('updateDayFixtures', day)
+    // }
+  },
+  updateDayFixtures ({ commit }, day) {
+    commit('shared/setLoading', true, {
+      root: true
+    })
+    commit('setFixturesLoading', true)
+    commit('shared/clearError', '', {
+      root: true
+    })
+    sportmonksAPI
+      .get('v2.0/fixtures/date/{date}', {
+        date: day,
+        odds: true,
+        localTeam: true,
+        visitorTeam: true,
+        league: true
+      })
+      .then((response) => {
+        let fixtureLoad = []
+        fixtureLoad['day'] = day
+        fixtureLoad['data'] = response.data
+        commit('setDayFixtures', fixtureLoad)
         commit('shared/setLoading', false, {
           root: true
         })
