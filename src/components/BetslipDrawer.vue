@@ -35,9 +35,9 @@ export default {
       this.$store.dispatch('betslips/deleteRow', id)
     }, 
     totalOdds() {
-      let total = 0;
+      let total = 1;
       this.betslipRows.forEach(element => {
-        total += parseFloat(element.odds)
+        total *= parseFloat(element.odds)
       })
       return Math.round(total * 100) / 100
     }
