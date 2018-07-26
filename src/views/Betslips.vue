@@ -2,7 +2,7 @@
   <v-container id="betslips">
     <h1>Betslips</h1>
     <v-layout>
-      <v-flex xs12 sm4 class="mx-auto">
+      <v-flex xs12 sm8 class="mx-auto">
         <v-card>
           <v-card-title>
             <div style="width: 100%">
@@ -25,11 +25,7 @@
               </v-layout>
             </div>
           </v-card-title>
-          <v-layout>
-            <v-flex d-flex xs12>
-              <img src="@/assets/images/slip_code.jpg" alt="Slip code">
-            </v-flex>
-          </v-layout>
+          <v-card-media src="@/assets/images/slip_code.jpg" alt="Slip code" height="200px"> </v-card-media>
         </v-card>
       </v-flex>
     </v-layout>
