@@ -8,10 +8,10 @@
     <v-layout align-center>
       <v-flex class="xs12 px-2 py-1">
         <span v-if="!disableOdd" class="primary px-2 py-1 pointer" @click="$emit('addBet')">
-          {{ odd }}
+          {{ odd | roundTo2Decimals }}
         </span>
         <span v-else class="px-2 py-1">
-          {{ odd }}
+          {{ odd | roundTo2Decimals }}
         </span>
       </v-flex>
     </v-layout>

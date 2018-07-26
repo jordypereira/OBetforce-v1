@@ -31,6 +31,9 @@ Vue.filter('getDay', (date) => {
   weekday[6] = 'Sat'
   return weekday[date.getDay()]
 })
+Vue.filter('roundTo2Decimals', (num) => {
+  return (Math.round(num * 100) / 100).toFixed(2)
+})
 
 new Vue({
   router,

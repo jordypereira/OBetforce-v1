@@ -19,7 +19,7 @@
       </v-layout>
     </v-flex>
     <v-flex xs2 d-flex align-start justify-end>
-      {{ odds }}
+      {{ odds | roundTo2Decimals }}
     </v-flex>
   </v-layout>
 </template>
