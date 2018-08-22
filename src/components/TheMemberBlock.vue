@@ -1,5 +1,6 @@
 <template>
   <v-layout>
+    <p v-if="authError"> {{ authError }} </p>
     <v-flex xs12 align-center justify-center d-flex>
       <v-form ref="loginForm" v-model="valid" v-if="!isLoggedIn && !pending" lazy-validation>
         <v-layout row>
@@ -60,6 +61,7 @@ export default {
       isLoggedIn: state => state.authentication.isLoggedIn,
       pending: state => state.authentication.pending,
       userEmail: state => state.authentication.username,
+      authError: state => state.authentication.authError,
   })
   }
 }
