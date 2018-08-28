@@ -8,7 +8,22 @@
             <span class="subheading">On this website you will be able to prove how good you are.</span>
             <v-divider class="my-3"></v-divider>
             <div class="title mb-3">Get started right away!</div>
-            <v-btn large color="primary" class="mx-0">Register</v-btn>
+            <v-btn large color="primary" class="mx-0" @click="dialog = true">Register</v-btn>
+            <v-dialog v-model="dialog" max-width="600px">
+              <v-card dark>
+                <v-card-title class="headline">Register for OBetforce</v-card-title>
+                <v-card-text>
+                  <register-form></register-form>
+                </v-card-text>
+                <v-card-actions>
+                  <a href="" color="primary darken-1" flat>Read our privacy statement</a>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary darken-1" flat="flat" @click="dialog = false">
+                    Cancel
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
             <!-- <v-btn large color="primary" class="mx-0 ml-4">Login</v-btn> -->
           </v-flex>
         </v-layout>
@@ -27,11 +42,14 @@ import liveImage from '@/assets/images/live_score.jpg';
 import fixtureImage from '@/assets/images/fixture.jpg';
 import newsImage from '@/assets/images/news_section.jpg';
 import ScoreCard from '@/components/ScoreCard';
+import RegisterForm from '@/components/RegisterForm';
 import { mapState } from 'vuex'
 
 export default {
+  name: 'Home',
   components: {
     ScoreCard,
+    RegisterForm
   },
   computed: {
     ...mapState({
@@ -47,6 +65,7 @@ export default {
   },
   data() {
     return {
+      dialog: false,
       subjects: [
         {
           name: 'Live',
