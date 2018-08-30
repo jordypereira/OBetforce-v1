@@ -44,8 +44,6 @@ const actions = {
           root: true
         })
         commit('setNewsArticles', resp.data.articles)
-        console.log(resp);
-
       })
       .catch((resp) => {
         commit('shared/setError', resp, {
