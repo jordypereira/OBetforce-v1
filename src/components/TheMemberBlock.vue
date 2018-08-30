@@ -1,6 +1,5 @@
 <template>
   <v-layout>
-    <p v-if="authError"> {{ authError }} </p>
     <v-flex xs12 align-center justify-center d-flex>
       <v-form ref="loginForm" v-model="valid" v-if="!isLoggedIn && !pending" lazy-validation>
         <v-layout row>
@@ -30,15 +29,14 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data() {
     return {
-      email: '',
-      password: '',
+      email: 'testerman@mail.be',
+      password: '12345678',
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid'
       ],
       passwordRules: [
         v => !!v || 'Password is required',
-        v => (v && v.length >= 6) || 'Password must be at least 6 characters'
       ],
       valid: true
     }

@@ -21,12 +21,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
     data: () => ({
       valid: true,
-      name: '',
-      email: '',
-      password: '',
+      name: 'Testing2',
+      email: 'test@test2',
+      password: '123456789',
       rules: {
           required: value => !!value || 'Required.',
           min: v => v.length >= 8 || 'Min 8 characters',
@@ -41,16 +43,27 @@ export default {
           v => /.+@.+/.test(v) || 'E-mail must be valid'
         ],
       showPassword: false,
-      checkbox: false
+      checkbox: true
     }),
 
     methods: {
       submit () {
         if (this.$refs.form.validate()) {
-          // Native form submission is not yet supported
-          alert('Submitted!')
+          this.$store.dispatch('authentication/register', {
+            name: this.name,
+            email: this.email,
+            password: this.password
+          });
         }
     }
+  },
+  computed: {
+    ...mapState({
+      isLoggedIn: state => state.authentication.isLoggedIn,
+      pending: state => state.authentication.pending,
+      userEmail: state => state.authentication.username,
+      authError: state => state.authentication.authError,
+  })
   }
 }
 </script>

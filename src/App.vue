@@ -3,6 +3,14 @@
     <the-nav-drawer></the-nav-drawer>
     <the-nav-toolbar></the-nav-toolbar>
     <v-content>
+      <v-alert
+      v-model="alert"
+      dismissible
+      :type="alertType"      
+      transition="scale-transition"
+    >
+      {{ authError }}
+    </v-alert>
       <router-view/>
     </v-content>
     <BetslipDrawer v-if="isLoggedIn" />
@@ -27,6 +35,9 @@ export default {
   computed: {
     ...mapState({
       isLoggedIn: state => state.authentication.isLoggedIn,
+      alert: state => state.authentication.alert,
+      alertType: state => state.authentication.alertType,
+      authError: state => state.authentication.authError,
   })
   },
   name: 'App'
