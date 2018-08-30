@@ -1,7 +1,7 @@
 <template>
   <v-card class="subject">
-    <v-card-media :src="subject.img" :alt="subject.name" :height="imageHeight" contain>
-    </v-card-media>
+    <v-img :src="subject.img" :alt="subject.name" :height="imageHeight" contain>
+    </v-img>
     <v-card-title v-if="subject.matches" primary-title>
       <div v-for="(match,i) in subject.matches" :key="i" class="match">
         <div class="match-league">{{ match.league }}</div>
