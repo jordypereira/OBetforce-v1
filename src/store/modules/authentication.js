@@ -25,6 +25,7 @@ const getters = {}
 const mutations = {
   LOGIN(state) {
     state.pending = true
+    state.alert = false
   },
   REGISTER(state) {
     state.pending = true
@@ -35,6 +36,7 @@ const mutations = {
   },
   REGISTER_SUCCESS(state, alert) {
     state.alert = true
+    state.pending = false
     state.authError = alert
     state.alertType = 'success'
   },
@@ -92,7 +94,6 @@ const actions = {
       })
       .then((resp) => {
         commit('REGISTER_SUCCESS', "Your account has been created.")
-        dispatch('login', creds)
       })
       .catch(err => {
         console.log(err.response)
