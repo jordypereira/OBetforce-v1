@@ -12,21 +12,26 @@
 
 <script>
 import NewsRow from '@/components/NewsRow'
-import axios from 'axios'
+import { mapState } from 'vuex'
+
 
 export default {
+  name: 'News',
   components: {
     NewsRow
   },
   data() {
     return {
-      news: null
+      
     }
   },
-  mounted() {
-    axios
-      .get('http://livesoccertv.com/mobile/api/news/') // eslint-disable-next-line
-      .then(response => (this.news = response.data.data))
-  }
+  computed: { ...mapState({
+    news: state => state.newsAPI.newsArticles,
+    loading: state => state.shared.loading,
+  }),
+  },
+  created() { 
+    this.$store.dispatch('newsAPI/getNewsArticles')  
+  },
 }
 </script>
