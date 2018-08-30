@@ -22,7 +22,7 @@
       </v-flex>
     </v-layout>
     <v-layout row wrap>
-      <VRow :column="['Online shop', 'Bonus', 'Max', 'Rule', 'Total']" :classes="['display-1']" />
+      <VRow :column="['Online shop', 'Bonus', 'Max', 'Rule', 'Total']" :classes="['headline']" />
       <BonusRow v-for="shop in shops" :key="shop.name" :name="shop.name" :bonus="shop.bonus" :max="shop.max" :rule="shop.rule" :slider="slider" />
     </v-layout>
   </v-container>

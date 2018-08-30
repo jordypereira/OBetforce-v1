@@ -13,7 +13,7 @@
       <v-flex xs12 sm 6 v-for="(match, i) in this.filterMatchesByLeague(livescores)" :key="i">
         <match-row :match="match" />
       </v-flex>
-      <v-flex v-if="!this.filterMatchesByLeague(livescores)" xs12 sm 6>No Matches Found</v-flex>
+      <v-flex v-if="this.filterMatchesByLeague(livescores).length < 1" xs12>No Matches Found</v-flex>
     </v-layout>
   </v-container>
 </template>

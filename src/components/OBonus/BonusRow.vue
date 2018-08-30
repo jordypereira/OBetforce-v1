@@ -5,7 +5,7 @@
       <v-flex xs12 sm4 d-flex justify-center>{{ bonus }} %</v-flex>
       <v-flex xs12 sm4 d-flex justify-center>€ {{ max }}</v-flex>
       <v-flex xs12 sm4 d-flex justify-center>{{ rule }}</v-flex>
-      <v-flex xs12 sm4 d-flex justify-center>{{ obonus }}</v-flex>
+      <v-flex xs12 sm4 d-flex justify-center subheading font-weight-bold>€ {{ obonus }}</v-flex>
     </v-layout>
   </v-flex>
 </template>
