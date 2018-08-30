@@ -1,29 +1,50 @@
+import axios from 'axios'
+
+const apiDomain = "http://api.obetforce.com/"
+
+const apiAxios = axios.create({
+  baseURL: apiDomain,
+  withCredentials: true,
+  headers: {
+    'Authorization': localStorage.getItem('token')
+  }
+})
+
 const state = {
   betslips: [],
   betslipRows: []
 }
 
 const mutations = {
-  addRow (state, row) {
+  addRow(state, row) {
     state.betslipRows.push(row)
   },
-  addBetslip (state) {
+  addBetslip(state) {
     state.betslips.push(state.betslipRows)
+    // foreach(state.betslipRows) {
+    //   apiAxios.post
+    // }
     state.betslipRows = []
   },
-  removeBetslipRow (state, id) {
+  removeBetslipRow(state, id) {
     state.betslipRows.splice(id, 1)
   }
 }
 
 const actions = {
-  createRow ({ commit }, row) {
+  createRow({
+    commit
+  }, row) {
     commit('addRow', row)
   },
-  deleteRow ({ commit }, id) {
+  deleteRow({
+    commit
+  }, id) {
     commit('removeBetslipRow', id)
   },
-  saveBetslip ({ commit }) {
+  saveBetslip({
+    commit
+  }) {
     commit('addBetslip')
   }
 }

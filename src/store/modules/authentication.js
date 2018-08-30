@@ -40,10 +40,12 @@ const mutations = {
     state.authError = alert
     state.alertType = 'success'
   },
-  LOGIN_FAILED(state, error) {
+  LOGIN_FAILED(state, alert) {
     state.isLoggedIn = false
+    state.alert = true
     state.pending = false
-    state.authError = error
+    state.alertType = 'error'
+    state.authError = alert
   },
   REGISTER_FAILED(state, alert) {
     state.alert = true

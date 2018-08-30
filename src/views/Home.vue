@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-md>
-    <v-jumbotron height="350px" class="my-2 px-5" v-if="!isLoggedIn">
+    <v-responsive height="350px" class="my-2 px-5" v-if="!isLoggedIn">
       <v-container fill-height>
         <v-layout align-center>
           <v-flex>
@@ -28,7 +28,7 @@
           </v-flex>
         </v-layout>
       </v-container>
-    </v-jumbotron>
+    </v-responsive>
     <v-layout row wrap>
       <v-flex v-for="(subject, i) in subjects" :key="i">
         <score-card :subject="subject" />

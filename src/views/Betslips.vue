@@ -25,8 +25,8 @@
               </v-layout>
             </div>
           </v-card-title>
-          <v-card-media src="@/assets/images/slip_code.jpg" alt="Slip code" height="200px"> </v-card-media>
-        </v-card>
+<!--           <v-img src="@/assets/images/slip_code.jpg" alt="Slip code" height="200px"> </v-img>
+ -->        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
