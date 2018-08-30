@@ -22,8 +22,8 @@
       </v-flex>
     </v-layout>
     <v-layout row wrap>
-      <VRow :column="['Online shop', 'Bonus', 'Total']" :classes="['display-1']" />
-      <BonusRow v-for="shop in shops" :key="shop.name" :bonus="shop.bonus" :name="shop.name" :slider="slider" />
+      <VRow :column="['Online shop', 'Bonus', 'Max', 'Rule', 'Total']" :classes="['display-1']" />
+      <BonusRow v-for="shop in shops" :key="shop.name" :name="shop.name" :bonus="shop.bonus" :max="shop.max" :rule="shop.rule" :slider="slider" />
     </v-layout>
   </v-container>
 </template>
@@ -40,14 +40,70 @@ export default {
   data () {
     return {
       slider: 0,
-      sliderMax: 1000,
-      shops: [{
-        name: 'A',
-        bonus: 100
-      }, {
-        name: 'B',
-        bonus: 50
-      }]
+      sliderMax: 500,
+      shops: [
+      {
+        name: '24bettle.com',
+        bonus: 100,
+        max: 100, 
+        rule: 'Play 8X'
+      }, 
+      {
+        name: '777.com',
+        bonus: 100,
+        max: 150
+      }, 
+      {
+        name: 'Betcenter',
+        bonus: 100,
+        max: 100
+      }, 
+      {
+        name: 'Betway',
+        bonus: 100,
+        max: 100
+      }, 
+      {
+        name: 'Betfirst',
+        bonus: 200,
+        max: 100
+      }, 
+      {
+        name: 'Bwin',
+        bonus: 100,
+        max: 120
+      }, 
+      {
+        name: 'Bingoal',
+        bonus: 100,
+        max: 210
+      }, 
+      {
+        name: 'Circus',
+        bonus: 100,
+        max: 250
+      }, 
+      {
+        name: 'Goldenpalace',
+        bonus: 100,
+        max: 500
+      }, 
+      {
+        name: 'Napoleongames',
+        bonus: 100,
+        max: 200
+      }, 
+      {
+        name: 'Stanleybet',
+        bonus: 200,
+        max: 100
+      }, 
+      {
+        name: 'Unibet',
+        bonus: 200,
+        max: 80
+      }
+      ]
     }
   }
 }
