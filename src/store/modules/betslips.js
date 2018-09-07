@@ -1,73 +1,78 @@
 import axios from 'axios'
 
-const apiDomain = "http://api.obetforce.com/"
+// Api URL
+const apiDomain = 'http://api.obetforce.com/'
+// Auth token received from logging in
 const accessToken = `Bearer ${localStorage.getItem('token')}`
 
 const apiAxios = axios.create({
   baseURL: apiDomain,
   headers: {
-    'Authorization': accessToken
+    Authorization: accessToken // Auth token
   }
 })
 
 const state = {
-  betslips: [],
-  betslipRows: []
+  betslips: [], // All betslips of the current user
+  betslipRows: [] // All bets in the current Betslip
 }
 
+// Call Mutations from Actions
 const mutations = {
-  addRow(state, row) {
+  // Adds a bet to the current Betslip
+  addRow (state, row) {
     state.betslipRows.push(row)
   },
-  removeBetslip(state) {
-    state.betslipRows = []
-  },
-  removeRow(state, id) {
+  // Removes a bet from the current Betslip
+  removeRow (state, id) {
     state.betslipRows.splice(id, 1)
+  },
+  // Clears the current Betslip
+  clearRows (state) {
+    state.betslipRows = []
   }
 }
 
+// Call Actions from Vue
 const actions = {
-  createRow({ // Add a bet to the betslip
-    commit
-  }, row) {
+  // Add a bet to the betslip
+  createRow ({ commit }, row) {
     commit('addRow', row)
   },
-  deleteRow({ // Remove a bet from the betslip
-    commit
-  }, id) {
+  // Remove a bet from the current betslip
+  deleteRow ({ commit }, id) {
     commit('removeRow', id)
   },
-  saveBetslip({
-    commit,
-    getters
-  }) { // Save a betslip
-    console.log(getters.betSlipString);
-
-    apiAxios.post('api/betslip/create', {
+  // Save the current betslip
+  saveBetslip ({ commit, getters }) {
+    apiAxios
+      .post('api/betslip/create', {
         bets: getters.betSlipString
       })
-      .then((resp) => {
-        commit('removeBetslip')
+      // Clear Rows
+      .then(commit('clearRows'))
+      // Don't clear rows and show error
+      .catch((err) => {
+        console.log(err)
+        // TODO Alert error
       })
-      .catch(err => {
-        console.log(err);
-      })
-
   }
 }
 
+// Get a state in a different way
 const getters = {
   rowInBetslip: (state) => (id) => {
     return state.betslipRows.some((betslipRow) => betslipRow.id === id)
   },
-  betSlipString: state => {
+  betSlipString: (state) => {
     let betString = ''
 
     // Add all bets in a long string format: condition,home_team,visitor_team,odds,date;
-    state.betslipRows.forEach(bet => {
-      betString += `${bet.condition},${bet.home},${bet.away},${bet.odds},${bet.date};`
-    });
+    state.betslipRows.forEach((bet) => {
+      betString += `${bet.condition},${bet.home},${bet.away},${bet.odds},${
+        bet.date
+      };`
+    })
 
     // Remove last ;
     betString = betString.slice(0, -1)
