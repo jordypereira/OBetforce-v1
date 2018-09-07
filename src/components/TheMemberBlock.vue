@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       email: 'testerman@mail.be',
-      password: '12345678',
+      password: '123456789',
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid'
