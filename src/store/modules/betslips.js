@@ -24,6 +24,9 @@ const mutations = {
   },
   removeRow(state, id) {
     state.betslipRows.splice(id, 1)
+  },
+  saveBetslips(state, betslips) {
+    state.betslips = betslips
   }
 }
 
@@ -54,6 +57,14 @@ const actions = {
         console.log(err);
       })
 
+  },
+  getBetslips({
+    commit
+  }) {
+    apiAxios.get('api/user/betslips').then((resp) => {
+      console.log(resp.data.data);
+      commit('saveBetslips', resp.data.data)
+    })
   }
 }
 
