@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 const apiDomain = "http://api.obetforce.com/"
+const accessToken = `Bearer ${localStorage.getItem('token')}`
 
 const apiAxios = axios.create({
   baseURL: apiDomain,
-  withCredentials: true,
   headers: {
-    'Authorization': localStorage.getItem('token')
+    'Authorization': accessToken
   }
 })
 
@@ -19,39 +19,60 @@ const mutations = {
   addRow(state, row) {
     state.betslipRows.push(row)
   },
-  addBetslip(state) {
-    state.betslips.push(state.betslipRows)
-    // foreach(state.betslipRows) {
-    //   apiAxios.post
-    // }
+  removeBetslip(state) {
     state.betslipRows = []
   },
-  removeBetslipRow(state, id) {
+  removeRow(state, id) {
     state.betslipRows.splice(id, 1)
   }
 }
 
 const actions = {
-  createRow({
+  createRow({ // Add a bet to the betslip
     commit
   }, row) {
     commit('addRow', row)
   },
-  deleteRow({
+  deleteRow({ // Remove a bet from the betslip
     commit
   }, id) {
-    commit('removeBetslipRow', id)
+    commit('removeRow', id)
   },
   saveBetslip({
-    commit
-  }) {
-    commit('addBetslip')
+    commit,
+    getters
+  }) { // Save a betslip
+    console.log(getters.betSlipString);
+
+    apiAxios.post('api/betslip/create', {
+        bets: getters.betSlipString
+      })
+      .then((resp) => {
+        commit('removeBetslip')
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
   }
 }
 
 const getters = {
   rowInBetslip: (state) => (id) => {
     return state.betslipRows.some((betslipRow) => betslipRow.id === id)
+  },
+  betSlipString: state => {
+    let betString = ''
+
+    // Add all bets in a long string format: condition,home_team,visitor_team,odds,date;
+    state.betslipRows.forEach(bet => {
+      betString += `${bet.condition},${bet.home},${bet.away},${bet.odds},${bet.date};`
+    });
+
+    // Remove last ;
+    betString = betString.slice(0, -1)
+
+    return betString
   }
 }
 

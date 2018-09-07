@@ -63,7 +63,8 @@ export default {
         home: this.match.localTeam.data.name, 
         away: this.match.visitorTeam.data.name, 
         condition: this.getCondition(i), 
-        odds: this.match.odds.data[0].bookmaker.data[0].odds.data[i].value
+        odds: this.match.odds.data[0].bookmaker.data[0].odds.data[i].value,
+        date: this.match.time.starting_at.date
       }
       this.$store.dispatch('betslips/createRow', row)
     },
