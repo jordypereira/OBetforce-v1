@@ -40,7 +40,7 @@ export default {
   data () {
     return {
       slider: 0,
-      sliderMax: 500,
+      sliderMax: 250,
       shops: [
       {
         name: '24bettle.com',
