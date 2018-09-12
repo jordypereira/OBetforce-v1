@@ -19,6 +19,7 @@ Vue.use(Vuetify, {
 
 Vue.config.productionTip = false
 Vue.filter('shortenDate', (date) => date.substring(0, 5))
+Vue.filter('onlyDate', (date) => date.substring(0, 10))
 Vue.filter('getDay', (date) => {
   date = new Date(date)
   let weekday = new Array(7)
