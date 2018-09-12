@@ -7,8 +7,8 @@
       </p>
     </div>
     <div>
-      <p>{{ time }}<br/>
-        <span class="grey--text">{{ date | onlyDate }}</span>
+      <p> <span class="title primary--text">{{ odds }}</span><br/>
+        <span class="grey--text">{{ date | onlyDate }} - {{ time }}</span>
       </p>
     </div>
   </v-layout>
@@ -20,6 +20,7 @@ export default {
     homeTeam: String,
     visitorTeam: String,
     condition: String,
+    odds: String,
     time: String,
     date: String,
   }

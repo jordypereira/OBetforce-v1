@@ -3,6 +3,7 @@
     <v-container v-if="!loading">
       <group-category v-for="category in groups.categories" :key="category.name" :category="category"></group-category>
     </v-container>
+    <h1>COMING SOON</h1>
   </div>
 </template>
 

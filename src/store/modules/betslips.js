@@ -73,7 +73,6 @@ const actions = {
     commit
   }) {
     apiAxios.get('api/user/betslips').then((resp) => {
-      console.log(resp.data.data);
       commit('saveBetslips', resp.data.data)
     })
   }
