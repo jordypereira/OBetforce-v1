@@ -1,19 +1,19 @@
 <template>
   <v-container id="betslips">
     <h1>Betslips</h1>
-    <v-layout>
-      <v-flex xs12 sm8 class="mx-auto">
+    <v-layout row wrap>
+      <v-flex d-flex xs12 sm5 md3 class="mx-auto" v-for="betslip in betslips" :key="betslip.id">
         <v-card>
           <v-card-title>
-            <div style="width: 100%">
+            <div>
               <div class="black text-xs-center">
                 <h1 class="white--text py-2" style="fontWeight: 400">BETTING SLIP</h1>
               </div>
               <span class="text-xs-center d-block mt-3">CUSTOMER RECEIPT</span>
-              <v-layout v-for="(bet, i) in bets" :key="i" row justify-space-between class="betslip mt-5">
-                <v-flex xs6>
+              <v-layout v-for="bet in betslip.bets.data" :key="bet.id" row justify-space-between class="betslip mt-5">
+                <v-flex xs9>
                   <p>
-                    <span class="title">{{ bet.match }}</span><br/>
+                    <span class="title">{{ bet.home_team }} - {{ bet.visitor_team }}</span><br/>
                     <span class="grey--text">{{ bet.condition }}</span>
                   </p>
                 </v-flex>
@@ -25,14 +25,15 @@
               </v-layout>
             </div>
           </v-card-title>
-<!--           <v-img src="@/assets/images/slip_code.jpg" alt="Slip code" height="200px"> </v-img>
- -->        </v-card>
+        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data() {
     return {
@@ -63,6 +64,13 @@ export default {
         }
       ]
     }
-  }
+  },
+  computed: { ...mapState({
+    betslips: state => state.betslips.betslips
+  }),
+  },
+  created() { 
+    this.$store.dispatch('betslips/getBetslips')  
+  },
 }
 </script>

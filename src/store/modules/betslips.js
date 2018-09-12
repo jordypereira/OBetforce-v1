@@ -30,6 +30,8 @@ const mutations = {
   // Clears the current Betslip
   clearRows (state) {
     state.betslipRows = []
+  saveBetslips(state, betslips) {
+    state.betslips = betslips
   }
 }
 
@@ -56,6 +58,15 @@ const actions = {
         console.log(err)
         // TODO Alert error
       })
+
+  },
+  getBetslips({
+    commit
+  }) {
+    apiAxios.get('api/user/betslips').then((resp) => {
+      console.log(resp.data.data);
+      commit('saveBetslips', resp.data.data)
+    })
   }
 }
 
