@@ -1,14 +1,12 @@
 <template>
   <v-container grid-list-md>
-    <v-responsive height="350px" class="my-2 px-5" v-if="!isLoggedIn">
-      <v-container fill-height>
-        <v-layout align-center>
+    <v-responsive >
+      <v-container>
+        <v-layout align-center class="my-2 px-5" v-if="!isLoggedIn">
           <v-flex>
-            <h3 :class="displayMobile">Welcome to {{ this.$store.state.shared.sitename }}</h3>
-            <span class="subheading">On this website you will be able to prove how good you are.</span>
-            <v-divider class="my-3"></v-divider>
             <div class="title mb-3">Get started right away!</div>
             <v-btn large color="primary" class="mx-0" @click="dialog = true">Register</v-btn>
+            <v-btn large color="primary" class="mx-0 ml-4">Login</v-btn>
             <v-dialog v-model="dialog" max-width="600px">
               <v-card dark>
                 <v-card-title class="headline">Register for OBetforce</v-card-title>
@@ -24,16 +22,15 @@
                 </v-card-actions>
               </v-card>
             </v-dialog>
-            <!-- <v-btn large color="primary" class="mx-0 ml-4">Login</v-btn> -->
+          </v-flex>
+        </v-layout>
+        <v-layout row wrap>
+          <v-flex v-for="(subject, i) in subjects" :key="i">
+            <score-card :subject="subject" />
           </v-flex>
         </v-layout>
       </v-container>
     </v-responsive>
-    <v-layout row wrap>
-      <v-flex v-for="(subject, i) in subjects" :key="i">
-        <score-card :subject="subject" />
-      </v-flex>
-    </v-layout>
   </v-container>
 </template>
 
