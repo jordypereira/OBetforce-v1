@@ -66,7 +66,7 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
-  data() {
+  data () {
     return {
       navMatches: [
         {
@@ -140,15 +140,15 @@ export default {
   },
   name: 'NavDrawer',
   methods: {
-    logout() {
-     this.$store.dispatch('authentication/logout');
-    },
+    logout () {
+      this.$store.dispatch('authentication/logout')
+    }
   },
   computed: {
     ...mapState({
       isLoggedIn: state => state.authentication.isLoggedIn,
-      userEmail: state => state.authentication.username,
-  })
+      userEmail: state => state.authentication.username
+    })
   }
 }
 </script>

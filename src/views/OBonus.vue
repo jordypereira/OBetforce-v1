@@ -42,67 +42,67 @@ export default {
       slider: 0,
       sliderMax: 250,
       shops: [
-      {
-        name: '24bettle.com',
-        bonus: 100,
-        max: 100, 
-        rule: 'Play 8X'
-      }, 
-      {
-        name: '777.com',
-        bonus: 100,
-        max: 150
-      }, 
-      {
-        name: 'Betcenter',
-        bonus: 100,
-        max: 100
-      }, 
-      {
-        name: 'Betway',
-        bonus: 100,
-        max: 100
-      }, 
-      {
-        name: 'Betfirst',
-        bonus: 200,
-        max: 100
-      }, 
-      {
-        name: 'Bwin',
-        bonus: 100,
-        max: 120
-      }, 
-      {
-        name: 'Bingoal',
-        bonus: 100,
-        max: 210
-      }, 
-      {
-        name: 'Circus',
-        bonus: 100,
-        max: 250
-      }, 
-      {
-        name: 'Goldenpalace',
-        bonus: 100,
-        max: 500
-      }, 
-      {
-        name: 'Napoleongames',
-        bonus: 100,
-        max: 200
-      }, 
-      {
-        name: 'Stanleybet',
-        bonus: 200,
-        max: 100
-      }, 
-      {
-        name: 'Unibet',
-        bonus: 200,
-        max: 80
-      }
+        {
+          name: '24bettle.com',
+          bonus: 100,
+          max: 100,
+          rule: 'Play 8X'
+        },
+        {
+          name: '777.com',
+          bonus: 100,
+          max: 150
+        },
+        {
+          name: 'Betcenter',
+          bonus: 100,
+          max: 100
+        },
+        {
+          name: 'Betway',
+          bonus: 100,
+          max: 100
+        },
+        {
+          name: 'Betfirst',
+          bonus: 200,
+          max: 100
+        },
+        {
+          name: 'Bwin',
+          bonus: 100,
+          max: 120
+        },
+        {
+          name: 'Bingoal',
+          bonus: 100,
+          max: 210
+        },
+        {
+          name: 'Circus',
+          bonus: 100,
+          max: 250
+        },
+        {
+          name: 'Goldenpalace',
+          bonus: 100,
+          max: 500
+        },
+        {
+          name: 'Napoleongames',
+          bonus: 100,
+          max: 200
+        },
+        {
+          name: 'Stanleybet',
+          bonus: 200,
+          max: 100
+        },
+        {
+          name: 'Unibet',
+          bonus: 200,
+          max: 80
+        }
       ]
     }
   }

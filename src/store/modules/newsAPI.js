@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiDomain = "https://newsapi.org/v2/"
+const apiDomain = 'https://newsapi.org/v2/'
 
 const apiAxios = axios.create({
   baseURL: apiDomain,
@@ -10,25 +10,25 @@ const apiAxios = axios.create({
 })
 
 const state = {
-  newsArticles: localStorage.getItem('news/articles') || null,
+  newsArticles: localStorage.getItem('news/articles') || null
 }
 
 const mutations = {
-  setNewsArticles(state, payload) {
+  setNewsArticles (state, payload) {
     state.newsArticles = payload
     localStorage.setItem('news/articles', payload)
   }
 }
 
 const actions = {
-  getNewsArticles({
+  getNewsArticles ({
     dispatch
   }) {
     if (!this.state.newsArticles) {
       dispatch('updateNewsArticles')
     }
   },
-  updateNewsArticles({
+  updateNewsArticles ({
     commit
   }) {
     commit('shared/setLoading', true, {
@@ -53,7 +53,7 @@ const actions = {
           root: true
         })
       })
-  },
+  }
 }
 
 const getters = {

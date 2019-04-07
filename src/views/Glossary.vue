@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       letters: [
         'A',
@@ -71,4 +71,3 @@ export default {
   }
 }
 </style>
-

@@ -19,7 +19,7 @@ export default {
     GroupOverview
   },
 
-  data() {
+  data () {
     return {
       groups: [
         {

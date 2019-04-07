@@ -27,7 +27,9 @@
     </v-layout>
     <h3 class="text-xs-center mt-2">Pre Match Odds</h3>
     <v-layout text-xs-center align-center justify-center class="secondary white--text" v-if="match.odds.data[0]">
-      <Odd v-if="match.odds.data[0].bookmaker.data[0].odds.data[i]" v-for="(name, i) in ['Home', 'Draw', 'Away']" :key="i" :name="name" :odd="match.odds.data[0].bookmaker.data[0].odds.data[i].value" @addBet="addBet(i)" :disableOdd="disableOdds" />
+      <template v-if="match.odds.data[0].bookmaker.data[0].odds.data[i]">
+        <Odd v-for="(name, i) in ['Home', 'Draw', 'Away']" :key="i" :name="name" :odd="match.odds.data[0].bookmaker.data[0].odds.data[i].value" @addBet="addBet(i)" :disableOdd="disableOdds" />
+      </template>
     </v-layout>
     <v-layout v-else justify-center>
       <p class="pt-2 font-weight-light font-italic"> No odds found </p>
@@ -47,42 +49,38 @@ export default {
   components: {
     Odd
   },
-  data() {
+  data () {
     return {
-      
+
     }
   },
   methods: {
-    addBet(i) {
+    addBet (i) {
       this.$store.state.betslipdrawer = true
-      
-      const row = 
-      { 
+
+      const row =
+      {
         id: this.match.id,
-        category: 'Reguliere speeltijd', 
-        home: this.match.localTeam.data.name, 
-        away: this.match.visitorTeam.data.name, 
-        condition: this.getCondition(i), 
+        category: 'Reguliere speeltijd',
+        home: this.match.localTeam.data.name,
+        away: this.match.visitorTeam.data.name,
+        condition: this.getCondition(i),
         odds: this.match.odds.data[0].bookmaker.data[0].odds.data[i].value,
         date: this.match.time.starting_at.date
       }
       this.$store.dispatch('betslips/createRow', row)
     },
-    getCondition(i) {
-      switch(i){
-        case 0:
+    getCondition (i) {
+      if (i === 0) {
         return this.match.localTeam.data.name
-        break;
-        case 1:
+      } else if (i === 1) {
         return 'Draw'
-        break;
-        case 2: 
+      } else if (i === 2) {
         return this.match.visitorTeam.data.name
-        break;
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>

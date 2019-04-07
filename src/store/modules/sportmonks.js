@@ -1,6 +1,6 @@
 import { SportmonksApi } from 'sportmonks'
 const sportmonksAPI = new SportmonksApi(
-  'DWKiZeKLZU0RgcgX1L6PX1mxroSV8e70EYLBSNwxsEej5a9mE9ptYuV2oFWD'
+  'a8EHIMF1e8BErCCquMILSgU5aF9gRmjSWte6fLpFNe4nMNuXDxB18hgVaM0O'
 )
 
 // const sportmonksAPI = '?api_token=DWKiZeKLZU0RgcgX1L6PX1mxroSV8e70EYLBSNwxsEej5a9mE9ptYuV2oFWD'

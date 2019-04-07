@@ -26,24 +26,23 @@
 import NewsRow from '@/components/NewsRow'
 import { mapState } from 'vuex'
 
-
 export default {
   name: 'News',
   components: {
     NewsRow
   },
-  data() {
+  data () {
     return {
-      
+
     }
   },
   computed: { ...mapState({
     news: state => state.newsAPI.newsArticles,
-    loading: state => state.shared.loading,
-  }),
+    loading: state => state.shared.loading
+  })
   },
-  created() { 
-    this.$store.dispatch('newsAPI/getNewsArticles')  
-  },
+  created () {
+    this.$store.dispatch('newsAPI/getNewsArticles')
+  }
 }
 </script>

@@ -16,13 +16,13 @@ export default {
   components: {
     GroupCategory
   },
-  data() {
+  data () {
     return {
       groups: null,
       loading: true
     }
   },
-  mounted() {
+  mounted () {
     axios
       .get('http://localhost:8080/group') // eslint-disable-next-line
       .then(response => {

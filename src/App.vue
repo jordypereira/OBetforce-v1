@@ -6,7 +6,7 @@
       <v-alert
       v-model="alert"
       dismissible
-      :type="alertType"      
+      :type="alertType"
       transition="scale-transition"
     >
       {{ authError }}
@@ -24,7 +24,7 @@
 import TheNavDrawer from '@/components/TheNavDrawer'
 import BetslipDrawer from '@/components/BetslipDrawer'
 import TheNavToolbar from '@/components/TheNavToolbar'
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -37,8 +37,8 @@ export default {
       isLoggedIn: state => state.authentication.isLoggedIn,
       alert: state => state.authentication.alert,
       alertType: state => state.authentication.alertType,
-      authError: state => state.authentication.authError,
-  })
+      authError: state => state.authentication.authError
+    })
   },
   name: 'App'
 }
@@ -55,4 +55,3 @@ export default {
   cursor: pointer;
 }
 </style>
-

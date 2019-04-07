@@ -26,11 +26,11 @@ export default {
     BetCardRow
   },
   props: {
-    bets: Array,
+    bets: Array
   },
   methods: {
-    totalOdds() {
-      let total = 1;
+    totalOdds () {
+      let total = 1
       this.bets.forEach(bet => {
         total *= parseFloat(bet.odds)
       })

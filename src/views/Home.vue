@@ -38,11 +38,11 @@
 </template>
 
 <script>
-import liveImage from '@/assets/images/live_score.jpg';
-import fixtureImage from '@/assets/images/fixture.jpg';
-import newsImage from '@/assets/images/news_section.jpg';
-import ScoreCard from '@/components/ScoreCard';
-import RegisterForm from '@/components/RegisterForm';
+import liveImage from '@/assets/images/live_score.jpg'
+import fixtureImage from '@/assets/images/fixture.jpg'
+import newsImage from '@/assets/images/news_section.jpg'
+import ScoreCard from '@/components/ScoreCard'
+import RegisterForm from '@/components/RegisterForm'
 import { mapState } from 'vuex'
 
 export default {
@@ -54,16 +54,16 @@ export default {
   computed: {
     ...mapState({
       isLoggedIn: state => state.authentication.isLoggedIn
-  }),
-  displayMobile() {
-    if(this.$vuetify.breakpoint.xs){
-      return 'headline'
-    }else {
-      return 'display-3'
+    }),
+    displayMobile () {
+      if (this.$vuetify.breakpoint.xs) {
+        return 'headline'
+      } else {
+        return 'display-3'
+      }
     }
-  }
   },
-  data() {
+  data () {
     return {
       dialog: false,
       subjects: [
@@ -77,16 +77,16 @@ export default {
               homeTeam: 'Oxford United',
               awayTeam: 'Scunthorpe United',
               homeScore: 1,
-              awayScore: 1,
+              awayScore: 1
             },
             {
               league: 'England - League One',
               homeTeam: 'Millwall',
               awayTeam: 'Nottingham Forest',
               homeScore: 2,
-              awayScore: 0,
-            },
-          ],
+              awayScore: 0
+            }
+          ]
         },
         {
           name: 'Fixture',
@@ -98,16 +98,16 @@ export default {
               homeTeam: 'Oxford United',
               awayTeam: 'Scunthorpe United',
               homeScore: 1,
-              awayScore: 1,
+              awayScore: 1
             },
             {
               league: 'England - League One',
               homeTeam: 'Millwall',
               awayTeam: 'Nottingham Forest',
               homeScore: 2,
-              awayScore: 0,
-            },
-          ],
+              awayScore: 0
+            }
+          ]
         },
         {
           name: 'Scores',
@@ -119,16 +119,16 @@ export default {
               homeTeam: 'Oxford United',
               awayTeam: 'Scunthorpe United',
               homeScore: 1,
-              awayScore: 1,
+              awayScore: 1
             },
             {
               league: 'England - League One',
               homeTeam: 'Millwall',
               awayTeam: 'Nottingham Forest',
               homeScore: 2,
-              awayScore: 0,
-            },
-          ],
+              awayScore: 0
+            }
+          ]
         },
         {
           name: 'News',
@@ -141,7 +141,7 @@ export default {
               title:
                 'Zidane addresses the Isco exit rumors ahead of Las Palmas trip',
               link: '/',
-              date: '2018-03-30 08:37:53',
+              date: '2018-03-30 08:37:53'
             },
             {
               img:
@@ -149,14 +149,12 @@ export default {
               title:
                 'Messi’s dressing-room message after Argentina’s 6-1 Spain loss',
               link: '/',
-              date: '2018-03-30 06:12:23',
-            },
-          ],
-        },
-      ],
-    };
-  },
-};
+              date: '2018-03-30 06:12:23'
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
 </script>
-
-

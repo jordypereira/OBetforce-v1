@@ -20,7 +20,7 @@
 <script>
 import { mapState } from 'vuex'
 import Row from '@/components/Betslips/BetslipRow.vue'
-import {ScaleTransition} from 'vue2-transitions'
+import { ScaleTransition } from 'vue2-transitions'
 
 export default {
   components: {
@@ -28,21 +28,21 @@ export default {
     ScaleTransition
   },
   computed: { ...mapState({
-    betslipRows: state => state.betslips.betslipRows,
-  })},
+    betslipRows: state => state.betslips.betslipRows
+  }) },
   methods: {
-    deleteRow(id) {
+    deleteRow (id) {
       this.$store.dispatch('betslips/deleteRow', id)
-    }, 
-    totalOdds() {
-      let total = 1;
+    },
+    totalOdds () {
+      let total = 1
       this.betslipRows.forEach(element => {
         total *= parseFloat(element.odds)
       })
       return Math.round(total * 100) / 100
     }
   },
-  data() {
+  data () {
     return {
 
     }

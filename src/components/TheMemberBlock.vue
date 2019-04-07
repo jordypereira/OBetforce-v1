@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
-  data() {
+  data () {
     return {
       email: 'testerman@mail.be',
       password: '123456789',
@@ -36,21 +36,21 @@ export default {
         v => /.+@.+/.test(v) || 'E-mail must be valid'
       ],
       passwordRules: [
-        v => !!v || 'Password is required',
+        v => !!v || 'Password is required'
       ],
       valid: true
     }
   },
   methods: {
-    logout() {
-     this.$store.dispatch('authentication/logout');
+    logout () {
+      this.$store.dispatch('authentication/logout')
     },
-    login() {
+    login () {
       if (this.$refs.loginForm.validate()) {
-      this.$store.dispatch('authentication/login', {
-        email: this.email,
-        password: this.password
-      });
+        this.$store.dispatch('authentication/login', {
+          email: this.email,
+          password: this.password
+        })
       }
     }
   },
@@ -59,8 +59,8 @@ export default {
       isLoggedIn: state => state.authentication.isLoggedIn,
       pending: state => state.authentication.pending,
       userEmail: state => state.authentication.username,
-      authError: state => state.authentication.authError,
-  })
+      authError: state => state.authentication.authError
+    })
   }
 }
 </script>

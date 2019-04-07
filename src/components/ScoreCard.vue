@@ -40,19 +40,19 @@
 <script>
 export default {
   props: {
-    subject: Object,
+    subject: Object
   },
   computed: {
-    imageHeight() {
+    imageHeight () {
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
-          return '150px';
+          return '150px'
         default:
-          return '200px';
+          return '200px'
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 <style scoped>
 .subject {

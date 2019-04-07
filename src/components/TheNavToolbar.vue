@@ -14,7 +14,7 @@
 
 <script>
 import TheMemberBlock from '@/components/TheMemberBlock'
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -22,11 +22,11 @@ export default {
   },
   computed: {
     ...mapState({
-      isLoggedIn: state => state.authentication.isLoggedIn,
-  }),
-  mobileAndLoggedOut(){
-      if(this.$vuetify.breakpoint.smAndDown){
-        if(!this.isLoggedIn){
+      isLoggedIn: state => state.authentication.isLoggedIn
+    }),
+    mobileAndLoggedOut () {
+      if (this.$vuetify.breakpoint.smAndDown) {
+        if (!this.isLoggedIn) {
           return false
         }
         return true

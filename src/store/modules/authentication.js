@@ -1,6 +1,6 @@
 import axios from 'axios'
 // Get Client ID and Secret from API
-import { clientId, clientSecret } from '../../env'
+// import { clientId, clientSecret } from '../../env'
 
 const apiDomain = 'http://api.obetforce.com/'
 const loginUrl = 'oauth/token'
@@ -69,8 +69,8 @@ const actions = {
     commit('LOGIN') // show spinner
     apiAxios
       .post(loginUrl, {
-        client_id: clientId,
-        client_secret: clientSecret,
+        // client_id: clientId,
+        // client_secret: clientSecret,
         grant_type: 'password',
         username: creds.email,
         password: creds.password

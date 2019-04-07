@@ -22,7 +22,7 @@ export default {
     condition: String,
     odds: String,
     time: String,
-    date: String,
+    date: String
   }
 }
 </script>

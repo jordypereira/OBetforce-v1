@@ -21,9 +21,9 @@
 <script>
 export default {
   props: {
-    match: [Array, Object],
-  },
-};
+    match: [Array, Object]
+  }
+}
 </script>
 
 <style scoped>

@@ -19,37 +19,35 @@
 </template>
 
 <script>
-import MatchRow from '@/components/MatchRow';
-import { mapState, mapActions } from 'vuex'
-import axios from 'axios';
+import MatchRow from '@/components/MatchRow'
+import { mapState } from 'vuex'
 
 export default {
   components: {
-    MatchRow,
+    MatchRow
   },
-  data() {
+  data () {
     return {
       country: null,
       selectedLeague: null,
-      info: null,
-    };
+      info: null
+    }
   },
   computed: { ...mapState({
     livescores: state => state.sportmonks.livescores,
     leagues: state => state.sportmonks.leagues,
     loading: state => state.shared.loading
-  })},
+  }) },
 
   methods: {
-    filterMatchesByLeague(matches) {
-      if (!this.selectedLeague) return matches;
-      return matches.filter(match => match.league_id === this.selectedLeague);
-    },
+    filterMatchesByLeague (matches) {
+      if (!this.selectedLeague) return matches
+      return matches.filter(match => match.league_id === this.selectedLeague)
+    }
   },
-  created() {
+  created () {
     this.$store.dispatch('sportmonks/getLivescores')
     this.$store.dispatch('sportmonks/getLeagues')
-   
-  },
-};
+  }
+}
 </script>

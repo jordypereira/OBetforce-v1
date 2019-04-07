@@ -19,14 +19,10 @@ export default {
   },
   computed: { ...mapState({
     betslips: state => state.betslips.betslips
-  }),
+  })
   },
-  created() { 
-    this.$store.dispatch('betslips/getBetslips')  
-  },
+  created () {
+    this.$store.dispatch('betslips/getBetslips')
+  }
 }
 </script>
-
-
-
-

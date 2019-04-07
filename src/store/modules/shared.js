@@ -1,37 +1,37 @@
 const state = {
   loading: false,
   error: null,
-  sitename: 'OBetforce',
+  sitename: 'OBetforce'
 }
 
 const getters = {
-  loading(state) {
+  loading (state) {
     return state.loading
   },
-  error(state) {
+  error (state) {
     return state.error
   }
 }
 
 const mutations = {
-  setLoading(state, payload) {
+  setLoading (state, payload) {
     state.loading = payload
   },
-  setError(state, payload) {
+  setError (state, payload) {
     state.error = payload
   },
-  clearError(state) {
+  clearError (state) {
     state.error = null
   }
 }
 
 const actions = {
-  clearError({
+  clearError ({
     commit
   }) {
     commit('clearError')
   },
-  setError({
+  setError ({
     commit
   }, payload) {
     commit('setError', payload)

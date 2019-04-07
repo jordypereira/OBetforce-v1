@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       subjects: [
         'View All Links',

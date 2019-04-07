@@ -20,19 +20,19 @@ const state = {
 // Call Mutations from Actions
 const mutations = {
   // Adds a bet to the current Betslip
-  addRow(state, row) {
+  addRow (state, row) {
     state.betslipRows.push(row)
   },
   // Removes a bet from the current Betslip
-  removeRow(state, id) {
+  removeRow (state, id) {
     state.betslipRows.splice(id, 1)
   },
   // Clears the current Betslip
-  clearRows(state) {
+  clearRows (state) {
     state.betslipRows = []
   },
   // Save user betslips for display
-  saveBetslips(state, betslips) {
+  saveBetslips (state, betslips) {
     state.betslips = betslips
   }
 }
@@ -40,19 +40,19 @@ const mutations = {
 // Call Actions from Vue
 const actions = {
   // Add a bet to the betslip
-  createRow({
+  createRow ({
     commit
   }, row) {
     commit('addRow', row)
   },
   // Remove a bet from the current betslip
-  deleteRow({
+  deleteRow ({
     commit
   }, id) {
     commit('removeRow', id)
   },
   // Save the current betslip
-  saveBetslip({
+  saveBetslip ({
     commit,
     getters
   }) {
@@ -67,9 +67,8 @@ const actions = {
         console.log(err)
         // TODO Alert error
       })
-
   },
-  getBetslips({
+  getBetslips ({
     commit
   }) {
     apiAxios.get('api/user/betslips').then((resp) => {

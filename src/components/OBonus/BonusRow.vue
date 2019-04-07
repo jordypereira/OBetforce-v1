@@ -20,9 +20,9 @@ export default {
     slider: [Number, String]
   },
   computed: {
-    obonus() {
-      let obonus =  this.slider + this.slider * this.bonus / 100
-      if (obonus >= this.max){
+    obonus () {
+      let obonus = this.slider + this.slider * this.bonus / 100
+      if (obonus >= this.max) {
         return this.max
       } else {
         return obonus
@@ -31,4 +31,3 @@ export default {
   }
 }
 </script>
-

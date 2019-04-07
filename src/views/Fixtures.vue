@@ -20,42 +20,41 @@
 </template>
 
 <script>
-import FixtureRow from '@/components/Fixtures/FixturesRow';
+import FixtureRow from '@/components/Fixtures/FixturesRow'
 import { mapState } from 'vuex'
 
 export default {
   name: 'Fixtures',
   components: {
-    FixtureRow,
+    FixtureRow
   },
-  data() {
+  data () {
     return {
       days: [],
-      selectedDay: this.getDay(0),
+      selectedDay: this.getDay(0)
     }
   },
   computed: { ...mapState({
     countries: state => state.sportmonks.countries,
     loading: state => state.shared.loading,
-    fixturesLoading: state => state.sportmonks.fixturesLoading,
+    fixturesLoading: state => state.sportmonks.fixturesLoading
   }),
-    fixtureFullScreen(){
-      return (this.$store.state.betslipdrawer) ? 'lg12' : 'lg8'
-    },
-    fixtures() {
-      return this.$store.state.sportmonks.dayFixtures[this.selectedDay] ? this.$store.state.sportmonks.dayFixtures[this.selectedDay] : null
-    }
-},
+  fixtureFullScreen () {
+    return (this.$store.state.betslipdrawer) ? 'lg12' : 'lg8'
+  },
+  fixtures () {
+    return this.$store.state.sportmonks.dayFixtures[this.selectedDay] ? this.$store.state.sportmonks.dayFixtures[this.selectedDay] : null
+  }
+  },
 
   methods: {
-    getCountry(id){
+    getCountry (id) {
       const country = this.countries.filter((country) => {
-        return country.id == id
+        return country.id === id
       })
-      if(country[0]){
+      if (country[0]) {
         return country[0]
-      }
-      else if(this.countries.length > 0) {
+      } else if (this.countries.length > 0) {
         this.$store.dispatch('sportmonks/getCountryById', id)
       }
     },
@@ -65,25 +64,23 @@ export default {
       day = day.toISOString().split('T')[0]
 
       return day
-      },
-    getXDays(x) {
+    },
+    getXDays (x) {
       for (let index = 0; index < x; index++) {
-        this.days.push(this.getDay(index));
+        this.days.push(this.getDay(index))
       }
-      }
+    }
   },
   watch: {
     // whenever selected day changes, this function will run
     selectedDay: function (newDay, oldDay) {
-          this.$store.dispatch('sportmonks/getDayFixtures', newDay)   
-
+      this.$store.dispatch('sportmonks/getDayFixtures', newDay)
     }
   },
-  created() {
-    this.getXDays(10) 
-    this.$store.dispatch('sportmonks/getDayFixtures', this.days[0])   
-    this.$store.dispatch('sportmonks/getCountries')  
-  },
-};
+  created () {
+    this.getXDays(10)
+    this.$store.dispatch('sportmonks/getDayFixtures', this.days[0])
+    this.$store.dispatch('sportmonks/getCountries')
+  }
+}
 </script>
-
