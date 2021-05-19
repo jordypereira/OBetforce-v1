@@ -7,4 +7,3 @@
 - Vuex
 - Vuetify
 - API
-- Firestore
